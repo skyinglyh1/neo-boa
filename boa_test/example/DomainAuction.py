@@ -6,16 +6,17 @@ from boa.interop.System.Runtime import *
 from boa.interop.System.ExecutionEngine import *
 from boa.builtins import concat
 from boa.interop.Ontology.Native import *
-
 ctx = GetContext()
 selfAddr = GetExecutingScriptHash()
+contractAddress = bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01')
+
 
 def Main(operation, args):
 
     if operation == 'register':
         acct = args[0]
         url = args[1]
-        if CheckWitness(acct) == True:
+        if CheckWitness(acct):
             return register(acct,url)
         Notify('CheckWitness failed!')
         return False
@@ -24,7 +25,7 @@ def Main(operation, args):
         acct = args[0]
         url = args[1]
         price = args[2]
-        if CheckWitness(acct) == True:
+        if CheckWitness(acct):
             return sell(acct,url,price)
         Notify('CheckWitness failed!')
         return False
@@ -37,8 +38,16 @@ def Main(operation, args):
         acct = args[0]
         url = args[1]
         price = args[2]
-        if CheckWitness(acct) == True:
+        if CheckWitness(acct):
             return buy(acct,url,price)
+        Notify('CheckWitness failed!')
+        return False
+
+    if operation == 'done':
+        acct = args[0]
+        url = args[1]
+        if CheckWitness(acct):
+            return done(acct,url)
         Notify('CheckWitness failed!')
         return False
 
@@ -52,7 +61,12 @@ def Main(operation, args):
 
 
 def register(account,domain):
-
+    '''
+    register an domain for account
+    :param account:
+    :param domain:
+    :return:
+    '''
     if not Get(ctx,domain):
         Put(ctx,domain,account)
         Notify('register succeed!')
@@ -60,7 +74,15 @@ def register(account,domain):
     Notify('already registered!')
     return False
 
+
 def sell(account,url, price):
+    '''
+    sell the domain at a price
+    :param account:
+    :param url:
+    :param price:
+    :return:
+    '''
     owner = Get(ctx,url)
     if owner == account :
         Put(ctx,concat('Original_Owner_',url),account)
@@ -71,12 +93,26 @@ def sell(account,url, price):
     Notify('Not a owner')
     return False
 
+
 def query(url):
+    '''
+    query a domain owner
+    :param url:
+    :return:
+    '''
     owner = Get(ctx,url)
     Notify(concat('owner is ',owner))
     return owner
 
+
 def buy(acct,url,price):
+    '''
+    buy a domain a price
+    :param acct:
+    :param url:
+    :param price:
+    :return:
+    '''
     owner = Get(ctx,url)
     if owner != selfAddr:
         Notify("url not in sale!")
@@ -86,7 +122,7 @@ def buy(acct,url,price):
     currentPrice = Get(ctx,concat('Price_',url))
     if not prevBuyer:
         if price >= currentPrice:
-            if transferONT(acct,selfAddr,price) == True:
+            if transferONT(acct, selfAddr, price):
                 Put(ctx,concat('TP_',url),acct)
                 if price > currentPrice:
                     Put(ctx,concat('Price_',url),price)
@@ -101,27 +137,69 @@ def buy(acct,url,price):
     if price <= currentPrice:
         Notify('Price is lower than current price')
         return False
-    #todo refund current price to prevbuyer
-    if transferONT(selfAddr,acct,currentPrice) == True:
+    if transferONT(selfAddr,acct,currentPrice):
         Put(ctx,concat('TP_',url),acct)
         Put(ctx,concat('Price_',url),price)
-        Notify('buy succeed!')
+        Notify('refund succeed!')
         return True
     else:
         Notify('refund failed')
         return False
 
+
 def transferONT(fromacct,toacct,amount):
-    if CheckWitness(fromacct) == True:
-        contractAddress = bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01')
-        param = [fromacct,toacct,amount]
-        res = Invoke(param,'transfer',contractAddress,1)
-        if res and res[0] == b'x01':
+    '''
+    transfer ONT
+    :param fromacct:
+    :param toacct:
+    :param amount:
+    :return:
+    '''
+    if CheckWitness(fromacct):
+        param = [fromacct, toacct, amount]
+        res = Invoke(1,contractAddress,'transfer',[param])
+        Notify(res)
+
+        if res and res == b'\x01':
+            Notify('transfer succeed')
             return True
         else:
+            Notify('transfer failed')
+
             return False
 
     else:
         Notify('checkWitness failed')
         return False
 
+
+def done(acct,url):
+    '''
+    finish the domain auction
+    :param acct:
+    :param url:
+    :return:
+    '''
+    currentOwner = Get(ctx,url)
+    if currentOwner != selfAddr:
+        Notify('not in sell')
+        return False
+    preOwner = Get(ctx,concat('Original_Owner_',url))
+    if preOwner != acct:
+        Notify('not owner')
+        return False
+    amount = Get(ctx,concat('Price_',url))
+    param = [selfAddr,acct,amount]
+    res = Invoke(1, contractAddress, 'transfer', [param])
+    if res and res == b'\x01':
+        buyer = Get(ctx,concat('TP_',url))
+        Put(ctx,url,buyer)
+
+        Delete(ctx,concat('TP_',url))
+        Delete(ctx,concat('Price_',url))
+        Delete(ctx,concat('Original_Owner_',url))
+        Notify('done succeed!')
+        return True
+    else:
+        Notify('transfer failed')
+        return False
