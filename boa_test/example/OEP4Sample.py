@@ -11,7 +11,7 @@ NAME = 'tokenName'
 SYMBOL = 'Symbol'
 DECIMAL = 8
 FACTOR = 100000000
-OWNER = bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01')
+OWNER = bytearray(b'\xe9\x8f\x49\x98\xd8\x37\xfc\xdd\x44\xa5\x05\x61\xf7\xf3\x21\x40\xc7\xc6\xc2\x60')
 TOTAL_AMOUNT = 1000000000
 TRANSFER_PREFIX = bytearray(b'\x01')
 APPROVE_PREFIX = bytearray(b'\x02 ')
@@ -141,8 +141,10 @@ def Approve(owner,spender,amount):
         return False
     if CheckWitness(owner) == False:
         return False
-    Put(ctx,concat(concat(APPROVE_PREFIX,owner),spender),amount)
-    Notify(['approve',owner,spender,amount])
+    key = concat(concat(APPROVE_PREFIX,owner),spender)
+    allowance = Get(ctx, key)
+    Put(ctx, key,amount + allowance)
+    Notify(['approve', owner, spender, amount])
     return True
 
 
