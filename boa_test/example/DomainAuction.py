@@ -8,6 +8,8 @@ from boa.builtins import concat
 from boa.interop.Ontology.Native import *
 ctx = GetContext()
 selfAddr = GetExecutingScriptHash()
+
+#ONT native contract address
 contractAddress = bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01')
 
 
@@ -61,12 +63,12 @@ def Main(operation, args):
 
 
 def register(account,domain):
-    '''
+    """
     register an domain for account
     :param account:
     :param domain:
     :return:
-    '''
+    """
     if not Get(ctx,domain):
         Put(ctx,domain,account)
         Notify('register succeed!')
@@ -76,13 +78,13 @@ def register(account,domain):
 
 
 def sell(account,url, price):
-    '''
+    """
     sell the domain at a price
     :param account:
     :param url:
     :param price:
     :return:
-    '''
+    """
     owner = Get(ctx,url)
     if owner == account :
         Put(ctx,concat('Original_Owner_',url),account)
@@ -95,24 +97,24 @@ def sell(account,url, price):
 
 
 def query(url):
-    '''
+    """
     query a domain owner
     :param url:
     :return:
-    '''
+    """
     owner = Get(ctx,url)
     Notify(concat('owner is ',owner))
     return owner
 
 
 def buy(acct,url,price):
-    '''
+    """
     buy a domain a price
     :param acct:
     :param url:
     :param price:
     :return:
-    '''
+    """
     owner = Get(ctx,url)
     if owner != selfAddr:
         Notify("url not in sale!")
@@ -120,6 +122,7 @@ def buy(acct,url,price):
 
     prevBuyer = Get(ctx,concat('TP_',url))
     currentPrice = Get(ctx,concat('Price_',url))
+    #no buyer before case
     if not prevBuyer:
         if price >= currentPrice:
             if transferONT(acct, selfAddr, price):
@@ -133,7 +136,7 @@ def buy(acct,url,price):
                 return False
         Notify('Price is lower than current price')
         return False
-
+    # has buyer before case
     if price <= currentPrice:
         Notify('Price is lower than current price')
         return False
@@ -148,13 +151,13 @@ def buy(acct,url,price):
 
 
 def transferONT(fromacct,toacct,amount):
-    '''
+    """
     transfer ONT
     :param fromacct:
     :param toacct:
     :param amount:
     :return:
-    '''
+    """
     if CheckWitness(fromacct):
         param = [fromacct, toacct, amount]
         res = Invoke(1,contractAddress,'transfer',[param])
@@ -174,12 +177,12 @@ def transferONT(fromacct,toacct,amount):
 
 
 def done(acct,url):
-    '''
+    """
     finish the domain auction
     :param acct:
     :param url:
     :return:
-    '''
+    """
     currentOwner = Get(ctx,url)
     if currentOwner != selfAddr:
         Notify('not in sell')
