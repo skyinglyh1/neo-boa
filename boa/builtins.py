@@ -1,5 +1,15 @@
 
 
+class state():
+    """
+    this is the parameter struct for ontology native invoke parameter
+    """
+    def __init__(self,fromaddr,toaddr,amount):
+        pass
+    pass
+
+
+
 class list(list):
 
     """

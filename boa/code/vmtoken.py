@@ -361,6 +361,22 @@ class VMTokenizer(object):
         self.insert1(VMOp.ROLL)
         self.insert1(VMOp.SETITEM)
 
+    def convert_state(self, pytoken):
+        """
+        convert state for ontology native transfer parameters
+        :param pytoken:
+        :return:
+        """
+        self.insert_push_integer(3)
+        self.convert1(VMOp.NEWSTRUCT)
+        self.convert1(VMOp.TOALTSTACK)
+
+        arglen = len(self.method.args)
+        while arglen > 0:
+            arglen -= 1
+            self.convert_load_parameter(self.method.args[arglen], arglen)
+        self.convert1(VMOp.FROMALTSTACK)
+
     def convert_built_in_list(self, pytoken):
         """
 
@@ -413,7 +429,8 @@ class VMTokenizer(object):
             return self.convert_push_data(bytes(pytoken.instruction.arg), pytoken)
         elif pytoken.func_name == 'bytes':
             return self.convert_push_data(pytoken.func_params[0].args, pytoken)
-
+        elif pytoken.func_name == 'state':
+            return self.convert_state(pytoken)
 #        for t in pytoken.func_params:
 #            t.to_vm(self)
 
@@ -645,7 +662,7 @@ class VMTokenizer(object):
                   'iter', 'isinstance', 'issubclass', 'input', 'id', 'hex',
                   'help', 'hash', 'hasattr', 'globals', 'format', 'exit',
                   'exec', 'eval', 'dir', 'deleteattr', 'credits', 'copyright',
-                  'compile', 'chr', 'callable', 'bin', 'ascii', 'any', 'all', ]:
+                  'compile', 'chr', 'callable', 'bin', 'ascii', 'any', 'all', 'state']:
             return True
 
         return False
