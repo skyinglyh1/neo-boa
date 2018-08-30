@@ -27,7 +27,7 @@ def transferONT(fromacct,toacct,amount):
     """
     if CheckWitness(fromacct):
 
-        param = state(fromacct, toacct, amount)
+        param = makeState(fromacct, toacct, amount)
         res = Invoke(1, contractAddress, 'transfer', [param])
         Notify(res)
 
@@ -43,3 +43,6 @@ def transferONT(fromacct,toacct,amount):
         Notify('checkWitness failed')
         return False
 
+
+def makeState(fromacct,toacct,amount):
+    return state(fromacct, toacct, amount)
