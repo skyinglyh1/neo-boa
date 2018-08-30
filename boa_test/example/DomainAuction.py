@@ -161,7 +161,7 @@ def transferONT(fromacct,toacct,amount):
     :return:
     """
     if CheckWitness(fromacct):
-        param = state(fromacct, toacct, amount)
+        param = makeState(fromacct, toacct, amount)
         res = Invoke(1,contractAddress,'transfer',[param])
         Notify(res)
 
@@ -176,28 +176,6 @@ def transferONT(fromacct,toacct,amount):
     else:
         Notify('checkWitness failed')
         return False
-
-def transferWithOutCheckWitness(fromacct,toacct,amount):
-    """
-    transfer ONT
-    :param fromacct:
-    :param toacct:
-    :param amount:
-    :return:
-    """
-    param = state(fromacct, toacct, amount)
-    res = Invoke(1,contractAddress,'transfer',[param])
-    Notify(res)
-
-    if res and res == b'\x01':
-        Notify('transfer succeed')
-        return True
-    else:
-        Notify('transfer failed')
-        return False
-
-
-
 
 
 def done(acct,url):
@@ -216,8 +194,10 @@ def done(acct,url):
         Notify('not owner')
         return False
     amount = Get(ctx, concat('Price_', url))
-    if transferWithOutCheckWitness(selfAddr, acct, amount ):
-        buyer = Get(ctx, concat('TP_', url))
+    param = makeState(selfAddr, acct, amount)
+    res = Invoke(1, contractAddress, 'transfer', [param])
+    if res and res == b'\x01':
+        buyer = Get(ctx, concat('TP_',url))
         Put(ctx, url, buyer)
 
         Delete(ctx,concat('TP_', url))
@@ -228,3 +208,6 @@ def done(acct,url):
     else:
         Notify('transfer failed')
         return False
+
+def makeState(fromacct,toacct,amount):
+    return state(fromacct, toacct, amount)
