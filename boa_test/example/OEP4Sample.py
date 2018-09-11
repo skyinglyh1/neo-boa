@@ -42,7 +42,7 @@ def Main(operation, args):
             to_acct = args[1]
             amount = args[2]
             return Transfer(from_acct,to_acct,amount)
-    if operation == 'transferMuti':
+    if operation == 'transferMulti':
         return TransferMulti(args)
     if operation == 'approve':
         if len(args) != 3:
