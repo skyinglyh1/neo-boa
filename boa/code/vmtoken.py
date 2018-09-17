@@ -64,20 +64,20 @@ class VMTokenizer(object):
 
     total_param_and_body_count_token = None
 
-    def __init__(self, method):
+    def __init__(self, method, method_token):
         self.method = method
         self._address = 0
         self.vm_tokens = OrderedDict()
 
-        self.method_begin_items()
+        self.method_begin_items(method_token)
 
-    def method_begin_items(self):
+    def method_begin_items(self, method_token):
 
         # we just need to inssert the total number of arguments + body variables
         # which is the length of the method `scope` dictionary
         # then create a new array for the vm to store
 
-        self.convert_push_integer(self.method.stacksize)
+        self.convert_push_integer(self.method.stacksize, method_token)
         self.convert1(VMOp.NEWARRAY)
         self.convert1(VMOp.TOALTSTACK)
 
@@ -367,14 +367,13 @@ class VMTokenizer(object):
         :param pytoken:
         :return:
         """
-        self.insert_push_integer(3)
+        self.convert_push_integer(pytoken.num_params, pytoken)
         self.convert1(VMOp.NEWSTRUCT)
         self.convert1(VMOp.TOALTSTACK)
 
-        arglen = len(self.method.args)
-        while arglen > 0:
-            arglen -= 1
-            self.convert_load_parameter(self.method.args[arglen], arglen)
+        for index in reversed(range(pytoken.num_params)):
+            self.convert_load_parameter(None, index)
+
         self.convert1(VMOp.FROMALTSTACK)
 
     def convert_built_in_list(self, pytoken):
@@ -382,8 +381,14 @@ class VMTokenizer(object):
 
         :param pytoken:
         """
-        lenfound = False
-        self.convert1(VMOp.NEWARRAY, pytoken)
+        self.convert_push_integer(pytoken.num_params, pytoken)
+        self.convert1(VMOp.NEWARRAY)
+        self.convert1(VMOp.TOALTSTACK)
+
+        for index in reversed(range(pytoken.num_params)):
+            self.convert_load_parameter(None, index)
+
+        self.convert1(VMOp.FROMALTSTACK)
 
     def convert_build_slice(self, pytoken):
 
@@ -676,7 +681,7 @@ class VMTokenizer(object):
         """
         syscall_name = None
         if op == 'print':
-            syscall_name = 'Neo.Runtime.Log'.encode('utf-8')
+            syscall_name = 'System.Runtime.Log'.encode('utf-8')
 
         elif op == 'enumerate':
             syscall_name = b'Neo.Enumerator.Create'

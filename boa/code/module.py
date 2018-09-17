@@ -278,7 +278,7 @@ class Module(object):
                 else:
                     raise Exception("Target method %s not found" % vmtoken.target_method)
 
-    def to_s(self):
+    def to_s_bak(self):
         """
         this method is used to print the output of the executable in a readable/ tokenized format.
         sample usage:
@@ -314,6 +314,7 @@ class Module(object):
 
         lineno = 0
         pstart = True
+        global_lineno = None
 
         for i, (key, value) in enumerate(self.all_vm_tokens.items()):
             if value.pytoken:
@@ -322,9 +323,10 @@ class Module(object):
                 to_label = None
                 from_label = '    '
 
-                if pt.lineno != lineno:
+                if pt.method_lineno + pt.lineno != global_lineno :
                     print("\n")
                     lineno = pt.lineno
+                    global_lineno = pt.lineno + pt.method_lineno
                     do_print_line_no = True
 
                 ds = ''
@@ -340,7 +342,7 @@ class Module(object):
                             pass
 
                 lno = "{:<10}".format(
-                    pt.lineno if do_print_line_no or pstart else '')
+                    pt.method_lineno + pt.lineno if do_print_line_no or pstart else '')
                 addr = "{:<5}".format(key)
                 op = "{:<20}".format(pt.instruction.name)
 
@@ -390,6 +392,9 @@ class Module(object):
         start_ofs = -1
         last_ofs = 0
         fileid = 0
+        last_fileid = 0
+        pt = None
+        global_lineno = None
         for i, (key, value) in enumerate(self.all_vm_tokens.items()):
             if value.pytoken:
                 pt = value.pytoken
@@ -401,12 +406,20 @@ class Module(object):
                     else:
                         fileid = files[pt.file]
 
-                if pt.lineno != lineno:
+                current_global_lineno = pt.method_lineno + pt.lineno
+                if pt.lineno > 0xFFFFFF:
+                    pt.instruction.lineno = pt.lineno - 0xFFFFFF
+                    current_global_lineno = pt.lineno
+
+                if current_global_lineno != global_lineno or fileid != last_fileid:
                     if start_ofs >= 0:
-                        map.append({'start': start_ofs, 'end': key - 1, 'file': fileid, 'method': pt.method_name,
-                                    'line': lineno, 'file_line_no': pt.method_lineno + lineno})
+                        map.append({'start': start_ofs, 'end': key - 1, 'file': last_fileid, 'method': lastline_Method,
+                                    'line': lineno, 'file_line_no': global_lineno})
                     start_ofs = key
                     lineno = pt.lineno
+                    global_lineno = current_global_lineno
+                    lastline_Method = pt.method_name
+                    last_fileid = fileid
 
                 if pt.is_breakpoint:
                     breakpoints.append(start_ofs)
@@ -414,10 +427,113 @@ class Module(object):
                 last_ofs = key
 
         if last_ofs >= 0:
-            map.append({'start': start_ofs, 'end': last_ofs, 'file': fileid, 'line': lineno})
+            map.append({'start': start_ofs, 'end': key , 'file': fileid, 'method': pt.method_name,
+                        'line': lineno, 'file_line_no': current_global_lineno})
 
         data['map'] = map
         data['breakpoints'] = breakpoints
         data['files'] = [{'id': val, 'url': os.path.abspath(key)} for key, val in files.items()]
         json_data = json.dumps(data, indent=4)
         return json_data
+
+    def to_s(self):
+        """
+        this method is used to print the output of the executable in a readable/ tokenized format.
+        sample usage:
+
+        >>> from boa.compiler import Compiler
+        >>> module = Compiler.load('./boa/tests/src/LambdaTest.py').default
+        >>> module.write()
+        >>> module.to_s_avm()
+        12            3   LOAD_CONST          9                [data]
+                      4   STORE_FAST          j                [data]
+        22            11  LOAD_FAST           j                [data]
+                      17  CALL_FUNCTION       Main.<locals>.q_1 \
+                                          [<boa.code.pytoken.PyToken object at 0x10cb53c50>] [data] 22
+                      20  STORE_FAST          m                [data]
+        24            27  243                 b'\x03\x00'      [data] 3
+                      30  LOAD_FAST           m                [data]
+                      35  NOP                                  [data]
+                      36  241                                  [data]
+                      37  242                                  [data]
+                      38  RETURN_VALUE                         [data]
+        20            49  243                 b'\x03\x00'      [data] 3
+                      52  LOAD_FAST           x                [data]
+                      57  LOAD_CONST          1                [data]
+                      58  BINARY_ADD                           [data]
+                      59  NOP                                  [data]
+                      60  241                                  [data]
+                      61  242                                  [data]
+                      62  RETURN_VALUE                         [data]
+        """
+        # Initialize if needed
+        if self.all_vm_tokens is None:
+            self.link_methods()
+
+        lineno = 0
+        pstart = True
+        global_lineno = None
+        ds = ''
+        pytoken_name = ''
+        lastfile = ''
+
+        for i, (key, value) in enumerate(self.all_vm_tokens.items()):
+            do_print_line_no = False
+            from_label = '    '
+            current_global_lineno  = ''
+
+            pytoken_name = ''
+            if value.pytoken:
+                pt = value.pytoken
+                do_print_line_no = False
+                to_label = None
+                from_label = '    '
+
+                current_global_lineno = pt.method_lineno + pt.lineno
+                if pt.lineno > BoaMethod.MAX_FILE_LINENO :
+                    pt.instruction.lineno = pt.lineno - BoaMethod.MAX_FILE_LINENO 
+                    current_global_lineno = pt.lineno
+
+                if current_global_lineno != global_lineno or pt.file != lastfile:
+                    print("\n")
+                    lineno = pt.lineno
+                    global_lineno = current_global_lineno
+                    do_print_line_no = True
+                    if pt.file != lastfile:
+                        lastfile = pt.file
+                        print("filename:", pt.file)
+
+                ds = ''
+                if value.data is not None:
+                    try:
+                        ds = int.from_bytes(value.data, 'little', signed=True)
+                    except Exception as e:
+                        pass
+                    if type(ds) is not int and len(ds) < 1:
+                        try:
+                            ds = value.data.decode('utf-8')
+                        except Exception as e:
+                            pass
+
+                arg_str = pt.arg_str
+                pytoken_name = pt.instruction.name
+
+            VMOP_name = VMOp.to_name(value.vm_op)
+            if (type(VMOP_name) == type(None)):
+                VMOP_name = 'PUSHBYTES' + str(value.vm_op)
+
+            lno = "{:<10}".format(
+                current_global_lineno if do_print_line_no or pstart else '')
+
+            addr = "{:<5}".format(key)
+            if value.pytoken:
+                op = "{:<30}".format(VMOP_name + '(' + pytoken_name + ')')
+            else:
+                op = "{:<30}".format(VMOP_name)
+
+            arg = "{:<50}".format(arg_str if value.pytoken else '')
+            data = "[data] {:<20}".format(ds)
+            print("%s%s%s%s%s%s" % (lno, from_label, addr, op, arg, data))
+
+            pstart = False
+
