@@ -395,6 +395,7 @@ class Module(object):
         last_fileid = 0
         pt = None
         global_lineno = None
+        fixed_pt_lineno = False
         for i, (key, value) in enumerate(self.all_vm_tokens.items()):
             if value.pytoken:
                 pt = value.pytoken
@@ -407,8 +408,9 @@ class Module(object):
                         fileid = files[pt.file]
 
                 current_global_lineno = pt.method_lineno + pt.lineno
-                if pt.lineno > 0xFFFFFF:
-                    pt.instruction.lineno = pt.lineno - 0xFFFFFF
+                if pt.lineno > BoaMethod.MAX_FILE_LINENO:
+                    fixed_pt_lineno = True
+                    pt.instruction.lineno = pt.lineno - BoaMethod.MAX_FILE_LINENO
                     current_global_lineno = pt.lineno
 
                 if current_global_lineno != global_lineno or fileid != last_fileid:
@@ -424,6 +426,9 @@ class Module(object):
                 if pt.is_breakpoint:
                     breakpoints.append(start_ofs)
 
+                if fixed_pt_lineno:
+                    fixed_pt_lineno = False    # instr is shared between global blocks. and multi method may use the the same global blocks
+                    pt.instruction.lineno = pt.lineno + BoaMethod.MAX_FILE_LINENO
                 last_ofs = key
 
         if last_ofs >= 0:
@@ -476,6 +481,7 @@ class Module(object):
         ds = ''
         pytoken_name = ''
         lastfile = ''
+        fixed_pt_lineno = False
 
         for i, (key, value) in enumerate(self.all_vm_tokens.items()):
             do_print_line_no = False
@@ -491,6 +497,7 @@ class Module(object):
 
                 current_global_lineno = pt.method_lineno + pt.lineno
                 if pt.lineno > BoaMethod.MAX_FILE_LINENO :
+                    fixed_pt_lineno = True
                     pt.instruction.lineno = pt.lineno - BoaMethod.MAX_FILE_LINENO 
                     current_global_lineno = pt.lineno
 
@@ -514,6 +521,10 @@ class Module(object):
                             ds = value.data.decode('utf-8')
                         except Exception as e:
                             pass
+
+                if fixed_pt_lineno:
+                    fixed_pt_lineno = False
+                    pt.instruction.lineno = pt.lineno + BoaMethod.MAX_FILE_LINENO
 
                 arg_str = pt.arg_str
                 pytoken_name = pt.instruction.name
