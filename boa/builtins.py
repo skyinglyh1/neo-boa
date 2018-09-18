@@ -1,3 +1,15 @@
+class state(list):
+    """
+     just for some plugin do not generate syntax check error.
+    """
+    pass
+
+class ToScriptHash(list):
+    """
+     just for some plugin do not generate syntax check error.
+    """
+    pass
+
 def concat(str1, str2):
     """
      range(str1, str2) -> str object

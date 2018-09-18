@@ -3,6 +3,9 @@ from boa.interop import VMOp
 from boa.interop.BigInteger import BigInteger
 from bytecode import Label
 from boa.code.pyop import *
+from boa.util import Digest
+from boa.util import Address
+import base58
 NEO_SC_FRAMEWORK = 'boa.interop.'
 
 
@@ -376,6 +379,23 @@ class VMTokenizer(object):
 
         self.convert1(VMOp.FROMALTSTACK)
 
+    def convert_ToScriptHash(self, pytoken):
+        """
+        convert state for ontology native transfer parameters
+        :param pytoken:
+        :return:
+        """
+        b = next(reversed(self.vm_tokens))
+        vm_token = self.vm_tokens[b]
+        arg = vm_token.pytoken.args.encode('utf-8')
+
+        addr = Address.b58decode(arg)
+        value = addr.to_array()
+        value_decode = addr.b58encode()
+
+        self.convert1(VMOp.DROP, pytoken)
+        self.convert_push_data(value, None)
+
     def convert_built_in_list(self, pytoken):
         """
 
@@ -430,6 +450,8 @@ class VMTokenizer(object):
 
         if pytoken.func_name == 'list':
             return self.convert_built_in_list(pytoken)
+        if pytoken.func_name == 'ToScriptHash':
+            return self.convert_ToScriptHash(pytoken)
         elif pytoken.func_name == 'bytearray':
             return self.convert_push_data(bytes(pytoken.instruction.arg), pytoken)
         elif pytoken.func_name == 'bytes':
