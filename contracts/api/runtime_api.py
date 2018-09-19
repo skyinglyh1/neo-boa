@@ -1,11 +1,17 @@
 
-from boa.interop.System.Runtime import Notify, CheckWitness, Log, GetTime
+from boa.interop.System.Runtime import Notify, CheckWitness, Log
 
 
 def Main(operation, args):
-    Notify(GetTime())
-    user = bytearray([248, 142, 51, 220, 214, 177, 110, 235, 27, 218, 59, 86, 23, 47, 140, 20, 114, 119, 159, 152])
-    CheckWitness(user)
+    if operation == "RunTimeTest":
+        user = args[0]
+        return RunTimeTest(user)
+
+
+def RunTimeTest(user):
+    Log("11111111")
+    res = CheckWitness(user)
+    Log(res)
     Notify("Hi BlockChain")
     Notify("s1", "s2", 1, 2, 3)
     Log("log message")
