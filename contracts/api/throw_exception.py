@@ -22,7 +22,7 @@ def TransferMulti(args: list):
         return True
 
 
-def Transfer(from_acct,to_acct,amount):
+def Transfer(from_acct, to_acct, amount):
 
     if from_acct == to_acct:
         return True

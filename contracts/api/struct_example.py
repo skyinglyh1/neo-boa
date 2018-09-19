@@ -4,6 +4,8 @@ from boa.interop.System.Runtime import Notify, Serialize, Deserialize
 def Main(operation, args):
     if operation == "StructTest":
         return StructTest()
+
+
 def StructTest():
     a = ["bob", 20]
     p = a
