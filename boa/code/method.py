@@ -4,6 +4,7 @@ from boa.code.expression import Expression
 from boa.code import pyop
 from boa.code.ast_preprocess import preprocess_method_body
 from uuid import uuid4
+from boa.code.pytoken import PyToken
 
 import pdb
 import dis
@@ -46,6 +47,8 @@ class method(object):
     _id = None
 
     code_object = None
+
+    MAX_FILE_LINENO = 0xFFFFFF
 
     @property
     def id(self):
@@ -140,6 +143,11 @@ class method(object):
                             item[0].opcode = pyop.LOAD_GLOBAL
             blocks = global_blocks
 
+        for item in global_blocks:
+            for instr in item:
+                if instr.lineno < self.MAX_FILE_LINENO :   # many method shared the _extra instruction. so only add once!
+                    instr.lineno = self.MAX_FILE_LINENO + instr.lineno
+
         instructions = []
         last_ln = self.bytecode[0].lineno
         for instr in self.bytecode:
@@ -157,7 +165,11 @@ class method(object):
 
         self._blocks = blocks
 
-        self.tokenizer = VMTokenizer(self)
+        method_exp = Expression([], None , self)
+        method_instr = Instr('NOP')
+        method_instr.lineno = 1
+        method_token = PyToken(method_instr, method_exp , None, None)
+        self.tokenizer = VMTokenizer(self, method_token)
 
         self._expressions = []
 
