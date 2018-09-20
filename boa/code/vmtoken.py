@@ -401,14 +401,7 @@ class VMTokenizer(object):
 
         :param pytoken:
         """
-        self.convert_push_integer(pytoken.num_params, pytoken)
-        self.convert1(VMOp.NEWARRAY)
-        self.convert1(VMOp.TOALTSTACK)
-
-        for index in reversed(range(pytoken.num_params)):
-            self.convert_load_parameter(None, index)
-
-        self.convert1(VMOp.FROMALTSTACK)
+        self.convert1(VMOp.NEWARRAY, pytoken)
 
     def convert_build_slice(self, pytoken):
 

@@ -4,6 +4,12 @@ class state(list):
     """
     pass
 
+class list(list):
+    """
+     just for some plugin do not generate syntax check error.
+    """
+    pass
+
 class ToScriptHash(list):
     """
      just for some plugin do not generate syntax check error.
