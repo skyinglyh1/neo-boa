@@ -2,7 +2,7 @@ from bytecode import Instr, Bytecode, Label
 from boa.code.vmtoken import VMTokenizer
 from boa.code.expression import Expression
 from boa.code import pyop
-from boa.code.ast_preprocess import preprocess_method_body
+from boa.code.ast_preprocess import preprocess_method_body, ABI
 from uuid import uuid4
 from boa.code.pytoken import PyToken
 
@@ -107,7 +107,7 @@ class method(object):
         self.code_object = self.block[0].arg
 
 #        dis.dis(code_object)
-        self.code, self.dictionary_defs = preprocess_method_body(self.code_object)
+        self.code, self.dictionary_defs = preprocess_method_body(self.code_object, self.name)
 
         self.bytecode = Bytecode.from_code(self.code)
 
