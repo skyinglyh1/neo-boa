@@ -388,6 +388,23 @@ class Module(object):
         mapfilename = output_path.replace('.avm', '.debug.json')
         with open(mapfilename, 'w+') as out_file:
             out_file.write(json_data)
+            
+    def generate_method_var_map(self):
+        FunctionsVarMap = []
+        for method in self.methods:
+            FunctionsVarMap.append({"Method":method.name, "VarMap":method.scope})
+
+        FunctionsVarMap_t = {"Functions": FunctionsVarMap}
+
+        json_data = json.dumps(FunctionsVarMap_t, indent=4)
+
+        fullpath = os.path.realpath(self.path)
+        path, filename = os.path.split(fullpath)
+        newfilename = filename.replace('.py', '.FuncMap.json')
+        mapfilename = '%s/%s' % (path, newfilename)
+
+        with open(mapfilename, 'w+') as out_file:
+            out_file.write(json_data)
 
     def generate_debug_json(self, avm_name, file_hash):
 
@@ -456,6 +473,7 @@ class Module(object):
         data['breakpoints'] = breakpoints
         data['files'] = [{'id': val, 'url': os.path.abspath(key)} for key, val in files.items()]
         json_data = json.dumps(data, indent=4)
+        self.generate_method_var_map()
         return json_data
 
     def to_s(self):
