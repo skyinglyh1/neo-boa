@@ -15,9 +15,9 @@ def save_avm(filename, a):
 
 if __name__ == '__main__':
     # # path=os.path.join(os.getcwd(),'contracts','test_contract.py')
-    Compiler.load_and_save("throw_exception.py")
+    Compiler.load_and_save("static_call_nep5.py")
     # Compiler.load_and_save("AddTest.py", './contracts/out_AddTest.txt')
-    avm_file_path = "throw_exception_readable.avm"
-    save_avm(avm_file_path, read_avm('throw_exception.avm'))
+    avm_file_path = "static_call_nep5.avm"
+    save_avm(avm_file_path, read_avm('static_call_nep5.avm'))
 
 

@@ -1,13 +1,7 @@
 {
+    "hash": "ededd959c7fedd60ccaf083ae487593362a4143a",
+    "entrypoint": "Main",
     "functions": [
-        {
-            "name": "Name",
-            "parameters": []
-        },
-        {
-            "name": "Value",
-            "parameters": []
-        },
         {
             "name": "DestroyContract",
             "parameters": []

@@ -1,7 +1,7 @@
 {
     "avm": {
-        "name": "dynamic_call_nep5",
-        "hash": "2a36cc3bc627cb4ccaf800742738d3b7"
+        "name": "static_call_nep5",
+        "hash": "dbd0f9b224f6b3a6f0f1e3e353ef79f21ddf8787"
     },
     "compiler": {
         "name": "neo-boa",
@@ -10,7 +10,7 @@
     "files": [
         {
             "id": 1,
-            "url": "D:\\SDK\\neo-boa-master\\template_contract_test\\dynamic_call_nep5\\dynamic_call_nep5.py"
+            "url": "D:\\SDK\\neo-boa-mygit\\template_contract_test\\static_call_nep5\\static_call_nep5.py"
         }
     ],
     "map": [

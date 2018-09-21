@@ -15,9 +15,9 @@ def save_avm(filename, a):
 
 if __name__ == '__main__':
     # # path=os.path.join(os.getcwd(),'contracts','test_contract.py')
-    Compiler.load_and_save("contract_api.py")
+    Compiler.load_and_save("migrate_destroyWithinContract.py")
     # Compiler.load_and_save("AddTest.py", './contracts/out_AddTest.txt')
-    avm_file_path = "contract_api.avm"
-    save_avm(avm_file_path, read_avm('contract_api.avm'))
+    avm_file_path = "migrate_destroyWithinContract.avm"
+    save_avm(avm_file_path, read_avm('migrate_destroyWithinContract.avm'))
 
 

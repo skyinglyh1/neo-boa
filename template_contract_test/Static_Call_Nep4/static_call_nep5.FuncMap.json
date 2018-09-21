@@ -1,0 +1,88 @@
+{
+    "Functions": [
+        {
+            "Method": "CallNep5Contract",
+            "VarMap": {
+                "operation": 0,
+                "params": 1
+            }
+        },
+        {
+            "Method": "Main",
+            "VarMap": {
+                "operation": 0,
+                "args": 1
+            }
+        },
+        {
+            "Method": "Deserialize",
+            "VarMap": {
+                "item": 0
+            }
+        },
+        {
+            "Method": "Serialize",
+            "VarMap": {
+                "item": 0
+            }
+        },
+        {
+            "Method": "GetTime",
+            "VarMap": {}
+        },
+        {
+            "Method": "VerifyBase58",
+            "VarMap": {
+                "arg": 0
+            }
+        },
+        {
+            "Method": "AddressToBase58",
+            "VarMap": {
+                "arg": 0
+            }
+        },
+        {
+            "Method": "Base58ToAddress",
+            "VarMap": {
+                "arg": 0
+            }
+        },
+        {
+            "Method": "Notify",
+            "VarMap": {
+                "arg": 0
+            }
+        },
+        {
+            "Method": "Log",
+            "VarMap": {
+                "message": 0
+            }
+        },
+        {
+            "Method": "CheckWitness",
+            "VarMap": {
+                "hash_or_pubkey": 0
+            }
+        },
+        {
+            "Method": "GetTrigger",
+            "VarMap": {}
+        },
+        {
+            "Method": "DynamicAppCall",
+            "VarMap": {
+                "smart_contract_hash": 0,
+                "args": 1
+            }
+        },
+        {
+            "Method": "RegisterAppCall",
+            "VarMap": {
+                "smart_contract_hash": 0,
+                "args": 1
+            }
+        }
+    ]
+}

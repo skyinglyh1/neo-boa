@@ -10,11 +10,11 @@
     "files": [
         {
             "id": 1,
-            "url": "D:\\SDK\\neo-boa-master\\template_contract_test\\OEP4Sample_throw_exception\\OEP4Sample.py"
+            "url": "D:\\SDK\\neo-boa-mygit\\template_contract_test\\OEP4Sample_throw_exception\\OEP4Sample.py"
         },
         {
             "id": 2,
-            "url": "D:\\SDK\\neo-boa-master\\boa\\builtins.py"
+            "url": "D:\\SDK\\neo-boa-mygit\\boa\\builtins.py"
         }
     ],
     "map": [
