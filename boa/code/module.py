@@ -16,6 +16,8 @@ from boa import __version__
 import json
 from boa.code.ast_preprocess import preprocess_method_body, ABI
 import ast
+from binascii import a2b_hex
+from boa.util import Digest
 
 
 class Module(object):
@@ -144,6 +146,7 @@ class Module(object):
         self.to_import = to_import
         self.module_name = module_name
         self._local_methods = []
+        self.abi = None
         source = open(path, 'rb')
         source_src = source.read()
 
@@ -151,17 +154,8 @@ class Module(object):
 
         ast_tree = ast.parse(source_src)
         if module_name == '': 
-            abi = ABI()
-            abi.visit(ast_tree)
-            json_data = json.dumps(abi.ABI_result, indent=4)
-
-            fullpath = os.path.realpath(path)
-            path, filename = os.path.split(fullpath)
-            newfilename = filename.replace('.py', '.abi.json')
-            mapfilename = '%s/%s' % (path, newfilename)
-
-            with open(mapfilename, 'w+') as out_file:
-                out_file.write(json_data)
+            self.abi = ABI()
+            self.abi.visit(ast_tree)
 
         self.bc = Bytecode.from_code(compiled_source)
         self.cfg = ControlFlowGraph.from_bytecode(self.bc)
@@ -375,17 +369,48 @@ class Module(object):
 
             pstart = False
 
-    def export_debug(self, output_path):
+    def export_debug(self, output_path, data):
         """
         this method is used to generate a debug map for NEO debugger
         """
 
-        file_hash = hashlib.md5(open(output_path, 'rb').read()).hexdigest()
+        hashstr = Digest.hash160(msg=data, is_hex=True) # str
+        a2bhashstr = bytearray(a2b_hex(hashstr)) # str ==> bytes ==>bytearray
+        a2bhashstr.reverse()
+        file_hash = a2bhashstr.hex() # bytearray ==> str
+
         avm_name = os.path.splitext(os.path.basename(output_path))[0]
-
         json_data = self.generate_debug_json(avm_name, file_hash)
-
         mapfilename = output_path.replace('.avm', '.debug.json')
+        with open(mapfilename, 'w+') as out_file:
+            out_file.write(json_data)
+
+        if self.abi != None:
+            self.abi.ABI_result["hash"] = file_hash
+            self.abi.ABI_result["entrypoint"] = self.main.name
+            self.abi.ABI_result["functions"] = self.abi.AbiFunclist
+            json_data = json.dumps(self.abi.ABI_result, indent=4)
+            fullpath = os.path.realpath(self.path)
+            path, filename = os.path.split(fullpath)
+            newfilename = filename.replace('.py', '.abi.json')
+            mapfilename = '%s/%s' % (path, newfilename)
+            with open(mapfilename, 'w+') as out_file:
+                out_file.write(json_data)
+
+    def generate_method_var_map(self):
+        FunctionsVarMap = []
+        for method in self.methods:
+            FunctionsVarMap.append({"Method":method.name, "VarMap":method.scope})
+
+        FunctionsVarMap_t = {"Functions": FunctionsVarMap}
+
+        json_data = json.dumps(FunctionsVarMap_t, indent=4)
+
+        fullpath = os.path.realpath(self.path)
+        path, filename = os.path.split(fullpath)
+        newfilename = filename.replace('.py', '.FuncMap.json')
+        mapfilename = '%s/%s' % (path, newfilename)
+
         with open(mapfilename, 'w+') as out_file:
             out_file.write(json_data)
 
@@ -456,6 +481,7 @@ class Module(object):
         data['breakpoints'] = breakpoints
         data['files'] = [{'id': val, 'url': os.path.abspath(key)} for key, val in files.items()]
         json_data = json.dumps(data, indent=4)
+        self.generate_method_var_map()
         return json_data
 
     def to_s(self):

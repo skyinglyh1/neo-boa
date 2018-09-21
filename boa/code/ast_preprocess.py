@@ -42,7 +42,8 @@ class ABI(ast.NodeVisitor):
         self.FuncMap = []
         self.home_module_in = False
         self.generic_visit(node)
-        self.ABI_result= {"functions":self.AbiFunclist}
+        #self.ABI_result= {"functions":self.AbiFunclist}
+        self.ABI_result= {}
 
     def visit_FunctionDef(self, node):
         args =[]

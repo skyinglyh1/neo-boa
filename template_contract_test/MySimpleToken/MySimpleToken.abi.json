@@ -1,0 +1,122 @@
+{
+    "hash": "1b98028af51329a69ce7ed693f7d7da1b1c8d173",
+    "entrypoint": "Main",
+    "functions": [
+        {
+            "name": "Deploy",
+            "parameters": []
+        },
+        {
+            "name": "TotalSupply",
+            "parameters": []
+        },
+        {
+            "name": "BalanceOf",
+            "parameters": [
+                {
+                    "name": "account",
+                    "type": ""
+                }
+            ]
+        },
+        {
+            "name": "Transfer",
+            "parameters": [
+                {
+                    "name": "_from",
+                    "type": ""
+                },
+                {
+                    "name": "_to",
+                    "type": ""
+                },
+                {
+                    "name": "_value",
+                    "type": ""
+                }
+            ]
+        },
+        {
+            "name": "TransferFrom",
+            "parameters": [
+                {
+                    "name": "_originator",
+                    "type": ""
+                },
+                {
+                    "name": "_from",
+                    "type": ""
+                },
+                {
+                    "name": "_to",
+                    "type": ""
+                },
+                {
+                    "name": "_amount",
+                    "type": ""
+                }
+            ]
+        },
+        {
+            "name": "Approve",
+            "parameters": [
+                {
+                    "name": "_from",
+                    "type": ""
+                },
+                {
+                    "name": "_to",
+                    "type": ""
+                },
+                {
+                    "name": "_amount",
+                    "type": ""
+                }
+            ]
+        },
+        {
+            "name": "Burn",
+            "parameters": [
+                {
+                    "name": "_amount",
+                    "type": ""
+                }
+            ]
+        },
+        {
+            "name": "Mint",
+            "parameters": [
+                {
+                    "name": "_to",
+                    "type": ""
+                },
+                {
+                    "name": "_amount",
+                    "type": ""
+                }
+            ]
+        },
+        {
+            "name": "TransferOwnership",
+            "parameters": [
+                {
+                    "name": "_account",
+                    "type": ""
+                }
+            ]
+        },
+        {
+            "name": "Allowance",
+            "parameters": [
+                {
+                    "name": "_from",
+                    "type": ""
+                },
+                {
+                    "name": "_to",
+                    "type": ""
+                }
+            ]
+        }
+    ]
+}
