@@ -5,3 +5,5 @@ Demos That have been tested smoothly. The template contracts all work well and t
 * MySimpleToken.py
 * static_call_nep5.py
 * OEP4Sample_raiseException.py
+* struct_example.py
+* storage_example.py
