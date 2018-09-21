@@ -19,7 +19,6 @@ import ast
 from binascii import a2b_hex
 from boa.util import Digest
 
-
 class Module(object):
 
     bc = None
@@ -386,6 +385,8 @@ class Module(object):
             out_file.write(json_data)
 
         if self.abi != None:
+
+            self.abi.ABI_result["CompilerVersion"] = __version__
             self.abi.ABI_result["hash"] = file_hash
             self.abi.ABI_result["entrypoint"] = self.main.name
             self.abi.ABI_result["functions"] = self.abi.AbiFunclist

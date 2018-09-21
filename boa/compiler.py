@@ -1,5 +1,6 @@
 import os
 from boa.code.module import Module
+from boa import __version__
 
 
 class Compiler(object):
@@ -130,3 +131,7 @@ class Compiler(object):
         compiler.entry_module = Module(path)
 
         return compiler
+
+    @staticmethod
+    def version():
+        return __version__
