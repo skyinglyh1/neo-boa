@@ -1,17 +1,17 @@
 """
 An Example of OEP-4
 """
-from boa.interop.System.Storage import *
-from boa.interop.System.Runtime import *
-from boa.builtins import concat
-
+from boa.interop.System.Storage import GetContext, Get, Put, Delete
+from boa.interop.System.Runtime import Notify, CheckWitness
+from boa.builtins import concat, ToScriptHash
 ctx = GetContext()
 
-NAME = 'tokenName'
+NAME = 'TokenName'
 SYMBOL = 'Symbol'
 DECIMAL = 8
 FACTOR = 100000000
-OWNER = bytearray(b'\xe9\x8f\x49\x98\xd8\x37\xfc\xdd\x44\xa5\x05\x61\xf7\xf3\x21\x40\xc7\xc6\xc2\x60')
+# OWNER = ToScriptHash("AQf4Mzu1YJrhz9f3aRkkwSm9n3qhXGSh4p")
+OWNER = bytearray(b'\x61\x6f\x2a\x4a\x38\x39\x6f\xf2\x03\xea\x01\xe6\xc0\x70\xae\x42\x1b\xb8\xce\x2d')
 TOTAL_AMOUNT = 1000000000
 TRANSFER_PREFIX = bytearray(b'\x01')
 APPROVE_PREFIX = bytearray(b'\x02 ')
@@ -21,20 +21,19 @@ SUPPLY_KEY = 'totoalSupply'
 
 def Main(operation, args):
     """
-
     :param operation:
     :param args:
     :return:
     """
-    if operation == 'name':
+    if operation == 'Name':
         return Name()
-    if operation == 'totalSupply':
+    if operation == 'TotalSupply':
         return TotalSupply()
-    if operation == 'init':
+    if operation == 'Init':
         return Init()
-    if operation == 'symbol':
+    if operation == 'Symbol':
         return Symbol()
-    if operation == 'transfer':
+    if operation == 'Transfer':
         if len(args) != 3:
             return False
         else:
@@ -42,16 +41,16 @@ def Main(operation, args):
             to_acct = args[1]
             amount = args[2]
             return Transfer(from_acct,to_acct,amount)
-    if operation == 'transferMulti':
+    if operation == 'TransferMulti':
         return TransferMulti(args)
-    if operation == 'approve':
+    if operation == 'Approve':
         if len(args) != 3:
             return False
         owner  = args[0]
         spender = args[1]
         amount = args[2]
         return Approve(owner,spender,amount)
-    if operation == 'transferFrom':
+    if operation == 'TransferFrom':
         if len(args) != 4:
             return False
         spender = args[0]
@@ -59,23 +58,23 @@ def Main(operation, args):
         to_acct = args[2]
         amount = args[3]
         return TransferFrom(spender,from_acct,to_acct,amount)
-    if operation == 'balanceOf':
+    if operation == 'BalanceOf':
         if len(args) != 1:
             return False
         acct = args[0]
         return BalanceOf(acct)
-    if operation == 'decimal':
+    if operation == 'Decimal':
         return Decimal()
-    if operation == 'allowance':
+    if operation == 'Allowance':
         if len(args) != 2:
-            return 0;
+            return False;
         owner = args[0]
         spender = args[1]
         return Allowance(owner,spender)
 
 
 def Name():
-    return 'TokenName'
+    return NAME
 
 
 def TotalSupply():
@@ -99,14 +98,13 @@ def Symbol():
 
 
 def Transfer(from_acct,to_acct,amount):
-
     if from_acct == to_acct:
         return True
     if amount == 0:
         return True
     if amount < 0 :
         return False
-    if  CheckWitness(from_acct) == False:
+    if CheckWitness(from_acct) == False:
         return False
     if len(to_acct) != 20:
         return False
@@ -128,11 +126,12 @@ def Transfer(from_acct,to_acct,amount):
 
 
 def TransferMulti(args):
-    for p in (args):
+    for p in args:
         if len(p) != 3:
             return False
         if Transfer(p[0],p[1],p[2]) == False:
-            return False
+            # return False # this is wrong since the previous transaction will be successful
+            raise Exception("TransferMulti failed.")
     return True
 
 
@@ -140,6 +139,8 @@ def Approve(owner,spender,amount):
     if amount < 0 :
         return False
     if CheckWitness(owner) == False:
+        return False
+    if len(spender) != 20:
         return False
     key = concat(concat(APPROVE_PREFIX,owner),spender)
     allowance = Get(ctx, key)
@@ -153,6 +154,8 @@ def TransferFrom(spender,from_acct,to_acct,amount):
         return False
     if CheckWitness(spender) == False:
         return False
+    if len(to_acct) != 20:
+        return False
     appoveKey = concat(concat(APPROVE_PREFIX,from_acct),spender)
     approvedAmount = Get(ctx,appoveKey)
     if approvedAmount < amount:
@@ -161,9 +164,6 @@ def TransferFrom(spender,from_acct,to_acct,amount):
         Delete(ctx,appoveKey)
     else:
         Put(ctx,appoveKey,approvedAmount - amount)
-
-    if len(to_acct) != 20:
-        return False
     fromKey = concat(TRANSFER_PREFIX,from_acct)
     fromBalance = Get(ctx,fromKey)
     if fromBalance < amount:
@@ -177,7 +177,7 @@ def TransferFrom(spender,from_acct,to_acct,amount):
     toBalance = Get(ctx,tokey)
 
     Put(ctx,tokey,toBalance + amount)
-    Notify(['transfer',from_acct,to_acct,amount])
+    Notify(['transferfrom',spender, from_acct,to_acct,amount])
     return True
 
 
