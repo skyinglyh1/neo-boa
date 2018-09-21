@@ -1,0 +1,115 @@
+{
+    "avm": {
+        "name": "dynamic_call_nep5",
+        "hash": "2a36cc3bc627cb4ccaf800742738d3b7"
+    },
+    "compiler": {
+        "name": "neo-boa",
+        "version": "0.4.8"
+    },
+    "files": [
+        {
+            "id": 1,
+            "url": "D:\\SDK\\neo-boa-master\\template_contract_test\\dynamic_call_nep5\\dynamic_call_nep5.py"
+        }
+    ],
+    "map": [
+        {
+            "start": 0,
+            "end": 12,
+            "file": 1,
+            "method": "Main",
+            "line": 1,
+            "file_line_no": 9
+        },
+        {
+            "start": 13,
+            "end": 28,
+            "file": 1,
+            "method": "Main",
+            "line": 2,
+            "file_line_no": 10
+        },
+        {
+            "start": 29,
+            "end": 37,
+            "file": 1,
+            "method": "Main",
+            "line": 3,
+            "file_line_no": 11
+        },
+        {
+            "start": 38,
+            "end": 72,
+            "file": 1,
+            "method": "Main",
+            "line": 4,
+            "file_line_no": 12
+        },
+        {
+            "start": 73,
+            "end": 77,
+            "file": 1,
+            "method": "Main",
+            "line": 5,
+            "file_line_no": 13
+        },
+        {
+            "start": 78,
+            "end": 97,
+            "file": 1,
+            "method": "Main",
+            "line": 6,
+            "file_line_no": 14
+        },
+        {
+            "start": 98,
+            "end": 109,
+            "file": 1,
+            "method": "Main",
+            "line": 8,
+            "file_line_no": 16
+        },
+        {
+            "start": 110,
+            "end": 141,
+            "file": 1,
+            "method": "Main",
+            "line": 10,
+            "file_line_no": 18
+        },
+        {
+            "start": 142,
+            "end": 158,
+            "file": 1,
+            "method": "Main",
+            "line": 12,
+            "file_line_no": 20
+        },
+        {
+            "start": 159,
+            "end": 201,
+            "file": 1,
+            "method": "Main",
+            "line": 14,
+            "file_line_no": 22
+        },
+        {
+            "start": 202,
+            "end": 214,
+            "file": 1,
+            "method": "CallNep5Contract",
+            "line": 1,
+            "file_line_no": 24
+        },
+        {
+            "start": 215,
+            "end": 245,
+            "file": 1,
+            "method": "CallNep5Contract",
+            "line": 2,
+            "file_line_no": 25
+        }
+    ],
+    "breakpoints": []
+}

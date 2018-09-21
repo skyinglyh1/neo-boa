@@ -1,0 +1,1507 @@
+{
+    "avm": {
+        "name": "test_contract",
+        "hash": "53dde9a88e183b83eddd98ef83864c7c"
+    },
+    "compiler": {
+        "name": "neo-boa",
+        "version": "0.4.8"
+    },
+    "files": [
+        {
+            "id": 1,
+            "url": "D:\\SDK\\neo-boa-master\\contracts\\contracts\\test_contract.py"
+        },
+        {
+            "id": 2,
+            "url": "D:\\SDK\\neo-boa-master\\boa\\builtins.py"
+        },
+        {
+            "id": 3,
+            "url": "D:\\SDK\\neo-boa-master\\contracts\\libs\\SafeMath.py"
+        },
+        {
+            "id": 4,
+            "url": "D:\\SDK\\neo-boa-master\\contracts\\libs\\SafeCheck.py"
+        },
+        {
+            "id": 5,
+            "url": "D:\\SDK\\neo-boa-master\\contracts\\libs\\Utils.py"
+        }
+    ],
+    "map": [
+        {
+            "start": 0,
+            "end": 2,
+            "file": 1,
+            "method": "main",
+            "line": 1,
+            "file_line_no": 39
+        },
+        {
+            "start": 3,
+            "end": 8,
+            "file": 1,
+            "method": "main",
+            "line": 2,
+            "file_line_no": 40
+        },
+        {
+            "start": 9,
+            "end": 14,
+            "file": 1,
+            "method": "main",
+            "line": 3,
+            "file_line_no": 41
+        },
+        {
+            "start": 15,
+            "end": 29,
+            "file": 1,
+            "method": "main",
+            "line": 4,
+            "file_line_no": 42
+        },
+        {
+            "start": 30,
+            "end": 35,
+            "file": 1,
+            "method": "main",
+            "line": 5,
+            "file_line_no": 43
+        },
+        {
+            "start": 36,
+            "end": 48,
+            "file": 1,
+            "method": "concatKey",
+            "line": 1,
+            "file_line_no": 246
+        },
+        {
+            "start": 49,
+            "end": 61,
+            "file": 1,
+            "method": "concatKey",
+            "line": 2,
+            "file_line_no": 247
+        },
+        {
+            "start": 62,
+            "end": 64,
+            "file": 1,
+            "method": "tokenToOng",
+            "line": 1,
+            "file_line_no": 242
+        },
+        {
+            "start": 65,
+            "end": 74,
+            "file": 1,
+            "method": "tokenToOng",
+            "line": 3,
+            "file_line_no": 244
+        },
+        {
+            "start": 75,
+            "end": 82,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 1,
+            "file_line_no": 222
+        },
+        {
+            "start": 83,
+            "end": 88,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 13,
+            "file_line_no": 13
+        },
+        {
+            "start": 89,
+            "end": 98,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 18,
+            "file_line_no": 18
+        },
+        {
+            "start": 99,
+            "end": 108,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 19,
+            "file_line_no": 19
+        },
+        {
+            "start": 109,
+            "end": 140,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 12,
+            "file_line_no": 233
+        },
+        {
+            "start": 141,
+            "end": 160,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 13,
+            "file_line_no": 234
+        },
+        {
+            "start": 161,
+            "end": 187,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 14,
+            "file_line_no": 235
+        },
+        {
+            "start": 188,
+            "end": 202,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 15,
+            "file_line_no": 236
+        },
+        {
+            "start": 203,
+            "end": 217,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 16,
+            "file_line_no": 237
+        },
+        {
+            "start": 218,
+            "end": 232,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 17,
+            "file_line_no": 238
+        },
+        {
+            "start": 233,
+            "end": 247,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 18,
+            "file_line_no": 239
+        },
+        {
+            "start": 248,
+            "end": 253,
+            "file": 1,
+            "method": "OngToToken",
+            "line": 19,
+            "file_line_no": 240
+        },
+        {
+            "start": 254,
+            "end": 256,
+            "file": 1,
+            "method": "purchaseToken",
+            "line": 1,
+            "file_line_no": 219
+        },
+        {
+            "start": 257,
+            "end": 266,
+            "file": 1,
+            "method": "purchaseToken",
+            "line": 2,
+            "file_line_no": 220
+        },
+        {
+            "start": 267,
+            "end": 277,
+            "file": 1,
+            "method": "calculateOngReceived",
+            "line": 1,
+            "file_line_no": 213
+        },
+        {
+            "start": 278,
+            "end": 278,
+            "file": 1,
+            "method": "calculateOngReceived",
+            "line": 5,
+            "file_line_no": 217
+        },
+        {
+            "start": 279,
+            "end": 289,
+            "file": 1,
+            "method": "calculateTokensReceived",
+            "line": 1,
+            "file_line_no": 207
+        },
+        {
+            "start": 290,
+            "end": 290,
+            "file": 1,
+            "method": "calculateTokensReceived",
+            "line": 5,
+            "file_line_no": 211
+        },
+        {
+            "start": 291,
+            "end": 296,
+            "file": 1,
+            "method": "buyPrice",
+            "line": 1,
+            "file_line_no": 202
+        },
+        {
+            "start": 297,
+            "end": 297,
+            "file": 1,
+            "method": "buyPrice",
+            "line": 4,
+            "file_line_no": 205
+        },
+        {
+            "start": 298,
+            "end": 300,
+            "file": 1,
+            "method": "sellPrice",
+            "line": 1,
+            "file_line_no": 192
+        },
+        {
+            "start": 301,
+            "end": 306,
+            "file": 1,
+            "method": "sellPrice",
+            "line": 13,
+            "file_line_no": 13
+        },
+        {
+            "start": 307,
+            "end": 316,
+            "file": 1,
+            "method": "sellPrice",
+            "line": 18,
+            "file_line_no": 18
+        },
+        {
+            "start": 317,
+            "end": 326,
+            "file": 1,
+            "method": "sellPrice",
+            "line": 19,
+            "file_line_no": 19
+        },
+        {
+            "start": 327,
+            "end": 334,
+            "file": 1,
+            "method": "sellPrice",
+            "line": 5,
+            "file_line_no": 196
+        },
+        {
+            "start": 335,
+            "end": 345,
+            "file": 1,
+            "method": "sellPrice",
+            "line": 6,
+            "file_line_no": 197
+        },
+        {
+            "start": 346,
+            "end": 355,
+            "file": 1,
+            "method": "sellPrice",
+            "line": 9,
+            "file_line_no": 200
+        },
+        {
+            "start": 356,
+            "end": 363,
+            "file": 1,
+            "method": "dividendsOf",
+            "line": 1,
+            "file_line_no": 189
+        },
+        {
+            "start": 364,
+            "end": 370,
+            "file": 1,
+            "method": "dividendsOf",
+            "line": 32,
+            "file_line_no": 32
+        },
+        {
+            "start": 371,
+            "end": 430,
+            "file": 1,
+            "method": "dividendsOf",
+            "line": 2,
+            "file_line_no": 190
+        },
+        {
+            "start": 431,
+            "end": 438,
+            "file": 1,
+            "method": "payOutToBalanceOf",
+            "line": 1,
+            "file_line_no": 185
+        },
+        {
+            "start": 439,
+            "end": 448,
+            "file": 1,
+            "method": "payOutToBalanceOf",
+            "line": 34,
+            "file_line_no": 34
+        },
+        {
+            "start": 449,
+            "end": 463,
+            "file": 1,
+            "method": "payOutToBalanceOf",
+            "line": 2,
+            "file_line_no": 186
+        },
+        {
+            "start": 464,
+            "end": 519,
+            "file": 1,
+            "method": "payOutToBalanceOf",
+            "line": 3,
+            "file_line_no": 187
+        },
+        {
+            "start": 520,
+            "end": 527,
+            "file": 1,
+            "method": "ReferralBalanceOf",
+            "line": 1,
+            "file_line_no": 181
+        },
+        {
+            "start": 528,
+            "end": 534,
+            "file": 1,
+            "method": "ReferralBalanceOf",
+            "line": 33,
+            "file_line_no": 33
+        },
+        {
+            "start": 535,
+            "end": 549,
+            "file": 1,
+            "method": "ReferralBalanceOf",
+            "line": 2,
+            "file_line_no": 182
+        },
+        {
+            "start": 550,
+            "end": 605,
+            "file": 1,
+            "method": "ReferralBalanceOf",
+            "line": 3,
+            "file_line_no": 183
+        },
+        {
+            "start": 606,
+            "end": 613,
+            "file": 1,
+            "method": "tokenBalanceOf",
+            "line": 1,
+            "file_line_no": 177
+        },
+        {
+            "start": 614,
+            "end": 620,
+            "file": 1,
+            "method": "tokenBalanceOf",
+            "line": 31,
+            "file_line_no": 31
+        },
+        {
+            "start": 621,
+            "end": 635,
+            "file": 1,
+            "method": "tokenBalanceOf",
+            "line": 2,
+            "file_line_no": 178
+        },
+        {
+            "start": 636,
+            "end": 691,
+            "file": 1,
+            "method": "tokenBalanceOf",
+            "line": 3,
+            "file_line_no": 179
+        },
+        {
+            "start": 692,
+            "end": 694,
+            "file": 1,
+            "method": "totalSupply",
+            "line": 1,
+            "file_line_no": 174
+        },
+        {
+            "start": 695,
+            "end": 700,
+            "file": 1,
+            "method": "totalSupply",
+            "line": 13,
+            "file_line_no": 13
+        },
+        {
+            "start": 701,
+            "end": 706,
+            "file": 1,
+            "method": "totalSupply",
+            "line": 2,
+            "file_line_no": 175
+        },
+        {
+            "start": 707,
+            "end": 709,
+            "file": 1,
+            "method": "totalOngBalance",
+            "line": 1,
+            "file_line_no": 169
+        },
+        {
+            "start": 710,
+            "end": 719,
+            "file": 1,
+            "method": "totalOngBalance",
+            "line": 4,
+            "file_line_no": 172
+        },
+        {
+            "start": 720,
+            "end": 732,
+            "file": 1,
+            "method": "setSymbol",
+            "line": 1,
+            "file_line_no": 161
+        },
+        {
+            "start": 733,
+            "end": 741,
+            "file": 1,
+            "method": "setSymbol",
+            "line": 2,
+            "file_line_no": 162
+        },
+        {
+            "start": 742,
+            "end": 749,
+            "file": 1,
+            "method": "setSymbol",
+            "line": 3,
+            "file_line_no": 163
+        },
+        {
+            "start": 750,
+            "end": 753,
+            "file": 1,
+            "method": "setSymbol",
+            "line": 4,
+            "file_line_no": 164
+        },
+        {
+            "start": 754,
+            "end": 766,
+            "file": 1,
+            "method": "setName",
+            "line": 1,
+            "file_line_no": 155
+        },
+        {
+            "start": 767,
+            "end": 775,
+            "file": 1,
+            "method": "setName",
+            "line": 2,
+            "file_line_no": 156
+        },
+        {
+            "start": 776,
+            "end": 783,
+            "file": 1,
+            "method": "setName",
+            "line": 3,
+            "file_line_no": 157
+        },
+        {
+            "start": 784,
+            "end": 787,
+            "file": 1,
+            "method": "setName",
+            "line": 4,
+            "file_line_no": 158
+        },
+        {
+            "start": 788,
+            "end": 800,
+            "file": 1,
+            "method": "setStakingRequirement",
+            "line": 1,
+            "file_line_no": 148
+        },
+        {
+            "start": 801,
+            "end": 809,
+            "file": 1,
+            "method": "setStakingRequirement",
+            "line": 2,
+            "file_line_no": 149
+        },
+        {
+            "start": 810,
+            "end": 817,
+            "file": 1,
+            "method": "setStakingRequirement",
+            "line": 3,
+            "file_line_no": 150
+        },
+        {
+            "start": 818,
+            "end": 864,
+            "file": 1,
+            "method": "setStakingRequirement",
+            "line": 4,
+            "file_line_no": 151
+        },
+        {
+            "start": 865,
+            "end": 868,
+            "file": 1,
+            "method": "setStakingRequirement",
+            "line": 5,
+            "file_line_no": 152
+        },
+        {
+            "start": 869,
+            "end": 881,
+            "file": 1,
+            "method": "deleteAdmin",
+            "line": 1,
+            "file_line_no": 141
+        },
+        {
+            "start": 882,
+            "end": 892,
+            "file": 1,
+            "method": "deleteAdmin",
+            "line": 29,
+            "file_line_no": 29
+        },
+        {
+            "start": 893,
+            "end": 905,
+            "file": 1,
+            "method": "deleteAdmin",
+            "line": 2,
+            "file_line_no": 142
+        },
+        {
+            "start": 906,
+            "end": 920,
+            "file": 1,
+            "method": "deleteAdmin",
+            "line": 3,
+            "file_line_no": 143
+        },
+        {
+            "start": 921,
+            "end": 976,
+            "file": 1,
+            "method": "deleteAdmin",
+            "line": 4,
+            "file_line_no": 144
+        },
+        {
+            "start": 977,
+            "end": 1026,
+            "file": 1,
+            "method": "deleteAdmin",
+            "line": 5,
+            "file_line_no": 145
+        },
+        {
+            "start": 1027,
+            "end": 1039,
+            "file": 1,
+            "method": "addAdmin",
+            "line": 1,
+            "file_line_no": 133
+        },
+        {
+            "start": 1040,
+            "end": 1050,
+            "file": 1,
+            "method": "addAdmin",
+            "line": 29,
+            "file_line_no": 29
+        },
+        {
+            "start": 1051,
+            "end": 1059,
+            "file": 1,
+            "method": "addAdmin",
+            "line": 2,
+            "file_line_no": 134
+        },
+        {
+            "start": 1060,
+            "end": 1074,
+            "file": 1,
+            "method": "addAdmin",
+            "line": 3,
+            "file_line_no": 135
+        },
+        {
+            "start": 1075,
+            "end": 1129,
+            "file": 1,
+            "method": "addAdmin",
+            "line": 4,
+            "file_line_no": 136
+        },
+        {
+            "start": 1130,
+            "end": 1172,
+            "file": 1,
+            "method": "addAdmin",
+            "line": 5,
+            "file_line_no": 137
+        },
+        {
+            "start": 1173,
+            "end": 1176,
+            "file": 1,
+            "method": "addAdmin",
+            "line": 6,
+            "file_line_no": 138
+        },
+        {
+            "start": 1177,
+            "end": 1184,
+            "file": 1,
+            "method": "disableInitialStage",
+            "line": 1,
+            "file_line_no": 124
+        },
+        {
+            "start": 1185,
+            "end": 1197,
+            "file": 1,
+            "method": "disableInitialStage",
+            "line": 7,
+            "file_line_no": 130
+        },
+        {
+            "start": 1198,
+            "end": 1205,
+            "file": 1,
+            "method": "onlyAdmin",
+            "line": 1,
+            "file_line_no": 114
+        },
+        {
+            "start": 1206,
+            "end": 1216,
+            "file": 1,
+            "method": "onlyAdmin",
+            "line": 29,
+            "file_line_no": 29
+        },
+        {
+            "start": 1217,
+            "end": 1231,
+            "file": 1,
+            "method": "onlyAdmin",
+            "line": 2,
+            "file_line_no": 115
+        },
+        {
+            "start": 1232,
+            "end": 1289,
+            "file": 1,
+            "method": "onlyAdmin",
+            "line": 3,
+            "file_line_no": 116
+        },
+        {
+            "start": 1290,
+            "end": 1297,
+            "file": 1,
+            "method": "onlyAdmin",
+            "line": 4,
+            "file_line_no": 117
+        },
+        {
+            "start": 1298,
+            "end": 1302,
+            "file": 1,
+            "method": "onlyAdmin",
+            "line": 5,
+            "file_line_no": 118
+        },
+        {
+            "start": 1303,
+            "end": 1310,
+            "file": 1,
+            "method": "onlyAdmin",
+            "line": 7,
+            "file_line_no": 120
+        },
+        {
+            "start": 1311,
+            "end": 1313,
+            "file": 1,
+            "method": "transfer",
+            "line": 1,
+            "file_line_no": 102
+        },
+        {
+            "start": 1314,
+            "end": 1323,
+            "file": 1,
+            "method": "transfer",
+            "line": 11,
+            "file_line_no": 112
+        },
+        {
+            "start": 1324,
+            "end": 1329,
+            "file": 1,
+            "method": "sell",
+            "line": 1,
+            "file_line_no": 90
+        },
+        {
+            "start": 1330,
+            "end": 1330,
+            "file": 1,
+            "method": "sell",
+            "line": 4,
+            "file_line_no": 93
+        },
+        {
+            "start": 1331,
+            "end": 1336,
+            "file": 1,
+            "method": "withdraw",
+            "line": 1,
+            "file_line_no": 84
+        },
+        {
+            "start": 1337,
+            "end": 1337,
+            "file": 1,
+            "method": "withdraw",
+            "line": 4,
+            "file_line_no": 87
+        },
+        {
+            "start": 1338,
+            "end": 1343,
+            "file": 1,
+            "method": "exit",
+            "line": 1,
+            "file_line_no": 78
+        },
+        {
+            "start": 1344,
+            "end": 1344,
+            "file": 1,
+            "method": "exit",
+            "line": 4,
+            "file_line_no": 81
+        },
+        {
+            "start": 1345,
+            "end": 1350,
+            "file": 1,
+            "method": "reinvest",
+            "line": 1,
+            "file_line_no": 72
+        },
+        {
+            "start": 1351,
+            "end": 1351,
+            "file": 1,
+            "method": "reinvest",
+            "line": 4,
+            "file_line_no": 75
+        },
+        {
+            "start": 1352,
+            "end": 1370,
+            "file": 1,
+            "method": "buy",
+            "line": 1,
+            "file_line_no": 53
+        },
+        {
+            "start": 1371,
+            "end": 1376,
+            "file": 1,
+            "method": "buy",
+            "line": 13,
+            "file_line_no": 13
+        },
+        {
+            "start": 1377,
+            "end": 1382,
+            "file": 1,
+            "method": "buy",
+            "line": 15,
+            "file_line_no": 15
+        },
+        {
+            "start": 1383,
+            "end": 1388,
+            "file": 1,
+            "method": "buy",
+            "line": 16,
+            "file_line_no": 16
+        },
+        {
+            "start": 1389,
+            "end": 1399,
+            "file": 1,
+            "method": "buy",
+            "line": 24,
+            "file_line_no": 24
+        },
+        {
+            "start": 1400,
+            "end": 1432,
+            "file": 1,
+            "method": "buy",
+            "line": 6,
+            "file_line_no": 58
+        },
+        {
+            "start": 1433,
+            "end": 1453,
+            "file": 1,
+            "method": "buy",
+            "line": 7,
+            "file_line_no": 59
+        },
+        {
+            "start": 1454,
+            "end": 1474,
+            "file": 1,
+            "method": "buy",
+            "line": 8,
+            "file_line_no": 60
+        },
+        {
+            "start": 1475,
+            "end": 1489,
+            "file": 1,
+            "method": "buy",
+            "line": 9,
+            "file_line_no": 61
+        },
+        {
+            "start": 1490,
+            "end": 1504,
+            "file": 1,
+            "method": "buy",
+            "line": 10,
+            "file_line_no": 62
+        },
+        {
+            "start": 1505,
+            "end": 1515,
+            "file": 1,
+            "method": "buy",
+            "line": 11,
+            "file_line_no": 63
+        },
+        {
+            "start": 1516,
+            "end": 1546,
+            "file": 1,
+            "method": "buy",
+            "line": 12,
+            "file_line_no": 64
+        },
+        {
+            "start": 1547,
+            "end": 1550,
+            "file": 1,
+            "method": "buy",
+            "line": 13,
+            "file_line_no": 65
+        },
+        {
+            "start": 1551,
+            "end": 1563,
+            "file": 1,
+            "method": "buy",
+            "line": 14,
+            "file_line_no": 66
+        },
+        {
+            "start": 1564,
+            "end": 1591,
+            "file": 1,
+            "method": "buy",
+            "line": 15,
+            "file_line_no": 67
+        },
+        {
+            "start": 1592,
+            "end": 1602,
+            "file": 1,
+            "method": "buy",
+            "line": 16,
+            "file_line_no": 68
+        },
+        {
+            "start": 1603,
+            "end": 1605,
+            "file": 1,
+            "method": "deploy",
+            "line": 1,
+            "file_line_no": 45
+        },
+        {
+            "start": 1606,
+            "end": 1667,
+            "file": 1,
+            "method": "deploy",
+            "line": 28,
+            "file_line_no": 28
+        },
+        {
+            "start": 1668,
+            "end": 1678,
+            "file": 1,
+            "method": "deploy",
+            "line": 29,
+            "file_line_no": 29
+        },
+        {
+            "start": 1679,
+            "end": 1684,
+            "file": 1,
+            "method": "deploy",
+            "line": 30,
+            "file_line_no": 30
+        },
+        {
+            "start": 1685,
+            "end": 1690,
+            "file": 1,
+            "method": "deploy",
+            "line": 2,
+            "file_line_no": 46
+        },
+        {
+            "start": 1691,
+            "end": 1705,
+            "file": 1,
+            "method": "deploy",
+            "line": 3,
+            "file_line_no": 47
+        },
+        {
+            "start": 1706,
+            "end": 1760,
+            "file": 1,
+            "method": "deploy",
+            "line": 4,
+            "file_line_no": 48
+        },
+        {
+            "start": 1761,
+            "end": 1765,
+            "file": 1,
+            "method": "deploy",
+            "line": 5,
+            "file_line_no": 49
+        },
+        {
+            "start": 1766,
+            "end": 1769,
+            "file": 1,
+            "method": "deploy",
+            "line": 6,
+            "file_line_no": 50
+        },
+        {
+            "start": 1770,
+            "end": 1782,
+            "file": 2,
+            "method": "range",
+            "line": 1,
+            "file_line_no": 72
+        },
+        {
+            "start": 1783,
+            "end": 1794,
+            "file": 2,
+            "method": "range",
+            "line": 9,
+            "file_line_no": 80
+        },
+        {
+            "start": 1795,
+            "end": 1811,
+            "file": 2,
+            "method": "range",
+            "line": 11,
+            "file_line_no": 82
+        },
+        {
+            "start": 1812,
+            "end": 1817,
+            "file": 2,
+            "method": "range",
+            "line": 13,
+            "file_line_no": 84
+        },
+        {
+            "start": 1818,
+            "end": 1825,
+            "file": 2,
+            "method": "range",
+            "line": 15,
+            "file_line_no": 86
+        },
+        {
+            "start": 1826,
+            "end": 1837,
+            "file": 2,
+            "method": "range",
+            "line": 17,
+            "file_line_no": 88
+        },
+        {
+            "start": 1838,
+            "end": 1849,
+            "file": 2,
+            "method": "range",
+            "line": 18,
+            "file_line_no": 89
+        },
+        {
+            "start": 1850,
+            "end": 1860,
+            "file": 2,
+            "method": "range",
+            "line": 19,
+            "file_line_no": 90
+        },
+        {
+            "start": 1861,
+            "end": 1870,
+            "file": 2,
+            "method": "range",
+            "line": 20,
+            "file_line_no": 91
+        },
+        {
+            "start": 1871,
+            "end": 1888,
+            "file": 2,
+            "method": "range",
+            "line": 21,
+            "file_line_no": 92
+        },
+        {
+            "start": 1889,
+            "end": 1894,
+            "file": 2,
+            "method": "range",
+            "line": 23,
+            "file_line_no": 94
+        },
+        {
+            "start": 1895,
+            "end": 1902,
+            "file": 3,
+            "method": "Sqrt",
+            "line": 1,
+            "file_line_no": 67
+        },
+        {
+            "start": 1903,
+            "end": 1920,
+            "file": 3,
+            "method": "Sqrt",
+            "line": 2,
+            "file_line_no": 68
+        },
+        {
+            "start": 1921,
+            "end": 1928,
+            "file": 3,
+            "method": "Sqrt",
+            "line": 3,
+            "file_line_no": 69
+        },
+        {
+            "start": 1929,
+            "end": 1940,
+            "file": 3,
+            "method": "Sqrt",
+            "line": 4,
+            "file_line_no": 70
+        },
+        {
+            "start": 1941,
+            "end": 1948,
+            "file": 3,
+            "method": "Sqrt",
+            "line": 5,
+            "file_line_no": 71
+        },
+        {
+            "start": 1949,
+            "end": 1985,
+            "file": 3,
+            "method": "Sqrt",
+            "line": 6,
+            "file_line_no": 72
+        },
+        {
+            "start": 1986,
+            "end": 1998,
+            "file": 3,
+            "method": "Pwr",
+            "line": 1,
+            "file_line_no": 46
+        },
+        {
+            "start": 1999,
+            "end": 2004,
+            "file": 3,
+            "method": "Pwr",
+            "line": 9,
+            "file_line_no": 54
+        },
+        {
+            "start": 2005,
+            "end": 2012,
+            "file": 3,
+            "method": "Pwr",
+            "line": 10,
+            "file_line_no": 55
+        },
+        {
+            "start": 2013,
+            "end": 2022,
+            "file": 3,
+            "method": "Pwr",
+            "line": 11,
+            "file_line_no": 56
+        },
+        {
+            "start": 2023,
+            "end": 2030,
+            "file": 3,
+            "method": "Pwr",
+            "line": 12,
+            "file_line_no": 57
+        },
+        {
+            "start": 2031,
+            "end": 2040,
+            "file": 3,
+            "method": "Pwr",
+            "line": 13,
+            "file_line_no": 58
+        },
+        {
+            "start": 2041,
+            "end": 2046,
+            "file": 3,
+            "method": "Pwr",
+            "line": 15,
+            "file_line_no": 60
+        },
+        {
+            "start": 2047,
+            "end": 2052,
+            "file": 3,
+            "method": "Pwr",
+            "line": 16,
+            "file_line_no": 61
+        },
+        {
+            "start": 2053,
+            "end": 2064,
+            "file": 3,
+            "method": "Pwr",
+            "line": 17,
+            "file_line_no": 62
+        },
+        {
+            "start": 2065,
+            "end": 2079,
+            "file": 3,
+            "method": "Pwr",
+            "line": 18,
+            "file_line_no": 63
+        },
+        {
+            "start": 2080,
+            "end": 2095,
+            "file": 3,
+            "method": "Pwr",
+            "line": 19,
+            "file_line_no": 64
+        },
+        {
+            "start": 2096,
+            "end": 2101,
+            "file": 3,
+            "method": "Pwr",
+            "line": 20,
+            "file_line_no": 65
+        },
+        {
+            "start": 2102,
+            "end": 2114,
+            "file": 3,
+            "method": "Div",
+            "line": 1,
+            "file_line_no": 38
+        },
+        {
+            "start": 2115,
+            "end": 2122,
+            "file": 3,
+            "method": "Div",
+            "line": 5,
+            "file_line_no": 42
+        },
+        {
+            "start": 2123,
+            "end": 2134,
+            "file": 3,
+            "method": "Div",
+            "line": 6,
+            "file_line_no": 43
+        },
+        {
+            "start": 2135,
+            "end": 2140,
+            "file": 3,
+            "method": "Div",
+            "line": 7,
+            "file_line_no": 44
+        },
+        {
+            "start": 2141,
+            "end": 2153,
+            "file": 3,
+            "method": "Mul",
+            "line": 1,
+            "file_line_no": 25
+        },
+        {
+            "start": 2154,
+            "end": 2161,
+            "file": 3,
+            "method": "Mul",
+            "line": 8,
+            "file_line_no": 32
+        },
+        {
+            "start": 2162,
+            "end": 2166,
+            "file": 3,
+            "method": "Mul",
+            "line": 9,
+            "file_line_no": 33
+        },
+        {
+            "start": 2167,
+            "end": 2178,
+            "file": 3,
+            "method": "Mul",
+            "line": 10,
+            "file_line_no": 34
+        },
+        {
+            "start": 2179,
+            "end": 2192,
+            "file": 3,
+            "method": "Mul",
+            "line": 11,
+            "file_line_no": 35
+        },
+        {
+            "start": 2193,
+            "end": 2198,
+            "file": 3,
+            "method": "Mul",
+            "line": 12,
+            "file_line_no": 36
+        },
+        {
+            "start": 2199,
+            "end": 2211,
+            "file": 3,
+            "method": "Sub",
+            "line": 1,
+            "file_line_no": 15
+        },
+        {
+            "start": 2212,
+            "end": 2221,
+            "file": 3,
+            "method": "Sub",
+            "line": 8,
+            "file_line_no": 22
+        },
+        {
+            "start": 2222,
+            "end": 2231,
+            "file": 3,
+            "method": "Sub",
+            "line": 9,
+            "file_line_no": 23
+        },
+        {
+            "start": 2232,
+            "end": 2244,
+            "file": 3,
+            "method": "Add",
+            "line": 1,
+            "file_line_no": 7
+        },
+        {
+            "start": 2245,
+            "end": 2256,
+            "file": 3,
+            "method": "Add",
+            "line": 5,
+            "file_line_no": 11
+        },
+        {
+            "start": 2257,
+            "end": 2266,
+            "file": 3,
+            "method": "Add",
+            "line": 6,
+            "file_line_no": 12
+        },
+        {
+            "start": 2267,
+            "end": 2272,
+            "file": 3,
+            "method": "Add",
+            "line": 7,
+            "file_line_no": 13
+        },
+        {
+            "start": 2273,
+            "end": 2280,
+            "file": 4,
+            "method": "RequireWitness",
+            "line": 1,
+            "file_line_no": 24
+        },
+        {
+            "start": 2281,
+            "end": 2316,
+            "file": 4,
+            "method": "RequireWitness",
+            "line": 8,
+            "file_line_no": 31
+        },
+        {
+            "start": 2317,
+            "end": 2320,
+            "file": 4,
+            "method": "RequireWitness",
+            "line": 9,
+            "file_line_no": 32
+        },
+        {
+            "start": 2321,
+            "end": 2328,
+            "file": 4,
+            "method": "RequireScriptHash",
+            "line": 1,
+            "file_line_no": 14
+        },
+        {
+            "start": 2329,
+            "end": 2338,
+            "file": 4,
+            "method": "RequireScriptHash",
+            "line": 8,
+            "file_line_no": 21
+        },
+        {
+            "start": 2339,
+            "end": 2342,
+            "file": 4,
+            "method": "RequireScriptHash",
+            "line": 9,
+            "file_line_no": 22
+        },
+        {
+            "start": 2343,
+            "end": 2350,
+            "file": 4,
+            "method": "Require",
+            "line": 1,
+            "file_line_no": 4
+        },
+        {
+            "start": 2351,
+            "end": 2356,
+            "file": 4,
+            "method": "Require",
+            "line": 7,
+            "file_line_no": 10
+        },
+        {
+            "start": 2357,
+            "end": 2360,
+            "file": 4,
+            "method": "Require",
+            "line": 8,
+            "file_line_no": 11
+        },
+        {
+            "start": 2361,
+            "end": 2364,
+            "file": 4,
+            "method": "Require",
+            "line": 9,
+            "file_line_no": 12
+        },
+        {
+            "start": 2365,
+            "end": 2367,
+            "file": 5,
+            "method": "Revert",
+            "line": 1,
+            "file_line_no": 2
+        },
+        {
+            "start": 2368,
+            "end": 2382,
+            "file": 5,
+            "method": "Revert",
+            "line": 7,
+            "file_line_no": 8
+        }
+    ],
+    "breakpoints": []
+}

@@ -1,0 +1,235 @@
+{
+    "avm": {
+        "name": "contract_api",
+        "hash": "d6e8892900a24a02b21a9e10cbfe08a2"
+    },
+    "compiler": {
+        "name": "neo-boa",
+        "version": "0.4.8"
+    },
+    "files": [
+        {
+            "id": 1,
+            "url": "D:\\SDK\\neo-boa-master\\template_contract_test\\contract_api\\contract_api.py"
+        }
+    ],
+    "map": [
+        {
+            "start": 0,
+            "end": 12,
+            "file": 1,
+            "method": "Main",
+            "line": 1,
+            "file_line_no": 7
+        },
+        {
+            "start": 13,
+            "end": 35,
+            "file": 1,
+            "method": "Main",
+            "line": 2,
+            "file_line_no": 8
+        },
+        {
+            "start": 36,
+            "end": 42,
+            "file": 1,
+            "method": "Main",
+            "line": 3,
+            "file_line_no": 9
+        },
+        {
+            "start": 43,
+            "end": 65,
+            "file": 1,
+            "method": "Main",
+            "line": 4,
+            "file_line_no": 10
+        },
+        {
+            "start": 66,
+            "end": 75,
+            "file": 1,
+            "method": "Main",
+            "line": 5,
+            "file_line_no": 11
+        },
+        {
+            "start": 76,
+            "end": 85,
+            "file": 1,
+            "method": "Main",
+            "line": 6,
+            "file_line_no": 12
+        },
+        {
+            "start": 86,
+            "end": 98,
+            "file": 1,
+            "method": "Main",
+            "line": 7,
+            "file_line_no": 13
+        },
+        {
+            "start": 99,
+            "end": 105,
+            "file": 1,
+            "method": "Main",
+            "line": 8,
+            "file_line_no": 14
+        },
+        {
+            "start": 106,
+            "end": 117,
+            "file": 1,
+            "method": "Main",
+            "line": 9,
+            "file_line_no": 15
+        },
+        {
+            "start": 118,
+            "end": 124,
+            "file": 1,
+            "method": "Main",
+            "line": 10,
+            "file_line_no": 16
+        },
+        {
+            "start": 125,
+            "end": 128,
+            "file": 1,
+            "method": "Main",
+            "line": 11,
+            "file_line_no": 17
+        },
+        {
+            "start": 129,
+            "end": 136,
+            "file": 1,
+            "method": "MigrateContract",
+            "line": 1,
+            "file_line_no": 33
+        },
+        {
+            "start": 137,
+            "end": 215,
+            "file": 1,
+            "method": "MigrateContract",
+            "line": 2,
+            "file_line_no": 34
+        },
+        {
+            "start": 216,
+            "end": 251,
+            "file": 1,
+            "method": "MigrateContract",
+            "line": 3,
+            "file_line_no": 35
+        },
+        {
+            "start": 252,
+            "end": 255,
+            "file": 1,
+            "method": "MigrateContract",
+            "line": 4,
+            "file_line_no": 36
+        },
+        {
+            "start": 256,
+            "end": 258,
+            "file": 1,
+            "method": "DestroyContract",
+            "line": 1,
+            "file_line_no": 27
+        },
+        {
+            "start": 259,
+            "end": 286,
+            "file": 1,
+            "method": "DestroyContract",
+            "line": 2,
+            "file_line_no": 28
+        },
+        {
+            "start": 287,
+            "end": 322,
+            "file": 1,
+            "method": "DestroyContract",
+            "line": 3,
+            "file_line_no": 29
+        },
+        {
+            "start": 323,
+            "end": 326,
+            "file": 1,
+            "method": "DestroyContract",
+            "line": 4,
+            "file_line_no": 30
+        },
+        {
+            "start": 327,
+            "end": 329,
+            "file": 1,
+            "method": "Value",
+            "line": 1,
+            "file_line_no": 23
+        },
+        {
+            "start": 330,
+            "end": 340,
+            "file": 1,
+            "method": "Value",
+            "line": 5,
+            "file_line_no": 5
+        },
+        {
+            "start": 341,
+            "end": 374,
+            "file": 1,
+            "method": "Value",
+            "line": 2,
+            "file_line_no": 24
+        },
+        {
+            "start": 375,
+            "end": 380,
+            "file": 1,
+            "method": "Value",
+            "line": 3,
+            "file_line_no": 25
+        },
+        {
+            "start": 381,
+            "end": 383,
+            "file": 1,
+            "method": "Name",
+            "line": 1,
+            "file_line_no": 19
+        },
+        {
+            "start": 384,
+            "end": 393,
+            "file": 1,
+            "method": "Name",
+            "line": 6,
+            "file_line_no": 6
+        },
+        {
+            "start": 394,
+            "end": 426,
+            "file": 1,
+            "method": "Name",
+            "line": 2,
+            "file_line_no": 20
+        },
+        {
+            "start": 427,
+            "end": 432,
+            "file": 1,
+            "method": "Name",
+            "line": 3,
+            "file_line_no": 21
+        }
+    ],
+    "breakpoints": []
+}

@@ -30,6 +30,26 @@ def Notify(arg):
     """
     pass
 
+def Base58ToAddress(arg):
+    """
+
+    :param arg:
+    """
+    pass
+
+def AddressToBase58(arg):
+    """
+
+    :param arg:
+    """
+    pass
+
+def VerifyBase58(arg):
+    """
+
+    :param arg:
+    """
+    pass
 
 def GetTime():
     """

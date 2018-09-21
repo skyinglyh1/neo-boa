@@ -14,6 +14,8 @@ import sys
 import hashlib
 from boa import __version__
 import json
+from boa.code.ast_preprocess import preprocess_method_body, ABI
+import ast
 
 
 class Module(object):
@@ -143,8 +145,23 @@ class Module(object):
         self.module_name = module_name
         self._local_methods = []
         source = open(path, 'rb')
+        source_src = source.read()
 
-        compiled_source = compile(source.read(), path, 'exec')
+        compiled_source = compile(source_src, path, 'exec')
+
+        ast_tree = ast.parse(source_src)
+        if module_name == '': 
+            abi = ABI()
+            abi.visit(ast_tree)
+            json_data = json.dumps(abi.ABI_result, indent=4)
+
+            fullpath = os.path.realpath(path)
+            path, filename = os.path.split(fullpath)
+            newfilename = filename.replace('.py', '.abi.json')
+            mapfilename = '%s/%s' % (path, newfilename)
+
+            with open(mapfilename, 'w+') as out_file:
+                out_file.write(json_data)
 
         self.bc = Bytecode.from_code(compiled_source)
         self.cfg = ControlFlowGraph.from_bytecode(self.bc)

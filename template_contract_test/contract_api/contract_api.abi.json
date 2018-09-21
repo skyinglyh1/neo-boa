@@ -1,0 +1,25 @@
+{
+    "functions": [
+        {
+            "name": "Name",
+            "parameters": []
+        },
+        {
+            "name": "Value",
+            "parameters": []
+        },
+        {
+            "name": "DestroyContract",
+            "parameters": []
+        },
+        {
+            "name": "MigrateContract",
+            "parameters": [
+                {
+                    "name": "code",
+                    "type": ""
+                }
+            ]
+        }
+    ]
+}
