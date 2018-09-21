@@ -1,7 +1,7 @@
 
-Demo That has been tested smoothly.
+Demos That have been tested smoothly. The template contracts all work well and they can be used as reference when you write ONT smart contract.
 
-* OPE4Sample.py
-* contract_api.py
-* dynamic_call_nep5.py
-* throw_exception.py
+* migrate_destroyWithinContract.py
+* MySimpleToken.py
+* static_call_nep5.py
+* OEP4Sample_raiseException.py
