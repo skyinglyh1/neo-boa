@@ -1,4 +1,4 @@
-from boa.interop.Neo.App import RegisterAppCall
+from boa.interop.System.App import RegisterAppCall
 from boa.interop.System.Runtime import Log
 
 

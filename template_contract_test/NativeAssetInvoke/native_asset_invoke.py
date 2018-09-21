@@ -1,7 +1,8 @@
 from boa.interop.Ontology.Native import Invoke
+from boa.builtins import ToScriptHash
 
-OntContract = "AFmseVrdL9f9oyCzZefL9tG6UbvhUMqNMV".ToScriptHash()
-OngContract = "AFmseVrdL9f9oyCzZefL9tG6UbvhfRZMHJ".ToScriptHash()
+OntContract = ToScriptHash("AFmseVrdL9f9oyCzZefL9tG6UbvhUMqNMV")
+OngContract = ToScriptHash("AFmseVrdL9f9oyCzZefL9tG6UbvhfRZMHJ")
 
 
 def Main(operation, args):
@@ -9,7 +10,7 @@ def Main(operation, args):
         return RecycleAsset()
 
 
-def RecycleAsset(from_acct: bytearray, to_acct: bytearray, ont: int, ong: int):
+def RecycleAsset(from_acct, to_acct, ont, ong):
     ret = bytearray()
     transfer = state(from_acct, to_acct, ont)
     ret = Invoke(0, OntContract, "transfer", [transfer])

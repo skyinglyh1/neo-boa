@@ -37,8 +37,11 @@ if __name__ == '__main__':
     # template_file_path = "./Static_Call_Nep4/"
     # template_file_name = "static_call_nep5"
 
-    template_file_path = "./Static_Call_Nep4/"
-    template_file_name = "static_call_nep5"
+    # template_file_path = "./Storage_Example/"
+    # template_file_name = "storage_example"
+
+    template_file_path = "./Struct_Example/"
+    template_file_name = "struct_example"
 
 
     # Compile the designated file.py
