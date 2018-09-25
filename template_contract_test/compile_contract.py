@@ -40,9 +40,11 @@ if __name__ == '__main__':
     # template_file_path = "./Storage_Example/"
     # template_file_name = "storage_example"
 
-    template_file_path = "./Struct_Example/"
-    template_file_name = "struct_example"
+    # template_file_path = "./Struct_Example/"
+    # template_file_name = "struct_example"
 
+    template_file_path = "./NativeAssetInvoke/"
+    template_file_name = "native_asset_invoke"
 
     # Compile the designated file.py
     run(template_file_path, template_file_name)

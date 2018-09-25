@@ -1,5 +1,5 @@
-from boa.interop.System.Storage import *
-from boa.builtins import *
+from boa.interop.System.Storage import Put, Get, GetContext
+from boa.builtins import concat
 from boa.interop.System.Storage import Put, Delete
 from boa.interop.System.Runtime import CheckWitness
 
