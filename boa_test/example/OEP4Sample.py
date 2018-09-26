@@ -146,8 +146,7 @@ def Approve(owner,spender,amount):
     if len(spender) != 20:
         return False
     key = concat(concat(APPROVE_PREFIX,owner),spender)
-    allowance = Get(ctx, key)
-    Put(ctx, key,amount + allowance)
+    Put(ctx, key, amount)
     Notify(['approve', owner, spender, amount])
     return True
 
