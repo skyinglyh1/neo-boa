@@ -23,24 +23,21 @@
 - [Overview](#overview)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Docs](#docs)
 - [License](#license)
-- [Tests](#tests)
 - [Donations](#donations)
 
 ## Overview
 
-The `neo-boa` compiler is a tool for compiling Python files to the `.avm` format for usage in the [Neo Virtual Machine](https://github.com/neo-project/neo-vm/) which is used to execute contracts on the [Neo Blockchain](https://github.com/neo-project/neo/).
+The `neo-boa` compiler is a tool for compiling Python files to the `.avm` format for usage to execute contracts on the [Ontology](https://github.com/ontio/ontology/).
 
 The compiler supports a subset of the Python language ( in the same way that a _boa constrictor_ is a subset of the Python snake species)
 
 
 #### What does it currently do
 
-- Compiles a subset of the Python language to the `.avm` format for use in the [Neo Virtual Machine](https://github.com/neo-project/neo-vm)
+- Compiles a subset of the Python language to the `.avm` format for use in the [Ontology](https://github.com/ontio/ontology)
 - Works for Python 3.6+
 - supports dictionaries
-- Adds debugging map for debugging in neo-python or other NEO debuggers
 
 
 #### What will it do
@@ -49,36 +46,12 @@ The compiler supports a subset of the Python language ( in the same way that a _
 
 #### Get Help or give help
 
-- Open a new [issue](https://github.com/CityOfZion/neo-boa/issues/new) if you encounter a problem.
-- Or ping **@localhuman** on the [NEO official community chatroom](https://discord.gg/R8v48YA).
 - Pull requests welcome. New features, writing tests and documentation are all needed.
 
 
 ## Installation
 
 Installation requires a Python 3.6 or later environment.
-
-#### Pip
-
-```
-pip install neo-boa
-```
-
-#### Docker
-
-This project contains a Dockerfile to batch compile Python smart contracts. Clone the repository and navigate into the docker sub directory of the project. Run the following command to build the container:
-
-```
-docker build -t neo-boa .
-```
-
-The neo-boa Docker container takes a directory on the host containing python smart contracts as an input and a directory to compile the .avm files to as an output. It can be executed like this:
-
-```
-docker run -it --rm -v /absolute/path/input_dir:/python-contracts -v /absolute/path/output_dir:/compiled-contracts neo-boa
-```
-
-The -v (volume) command maps the directories on the host to the directories within the container.
 
 #### Manual
 
@@ -112,20 +85,6 @@ The compiler may be used like in the following example:
 from boa.compiler import Compiler
 
 Compiler.load_and_save('path/to/your/file.py')
-```
-
-
-## Docs
-
-You can [read the docs here](http://neo-boa.readthedocs.io/en/latest/).
-
-
-## Tests
-
-Install `neo-python` ( or use `requirements_test.txt`) and run the following command
-```
-python -m unittest discover boa_tests
-
 ```
 
 

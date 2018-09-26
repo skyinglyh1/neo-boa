@@ -754,7 +754,7 @@ class VMTokenizer(object):
         self.convert1(VMOp.PACK)
 
         # insert syscall
-        syscall_name = 'Neo.Runtime.Notify'.encode('utf-8')
+        syscall_name = 'System.Runtime.Notify'.encode('utf-8')
         length = len(syscall_name)
         ba = bytearray([length]) + bytearray(syscall_name)
         vmtoken = self.convert1(VMOp.SYSCALL, pytoken, data=ba)
