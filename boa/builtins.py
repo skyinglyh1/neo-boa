@@ -25,31 +25,31 @@ def concat(str1, str2):
     pass
 
 
-def keys(dictionary):
-    """
-     k = keys(mydict)
-
-     pushes a list of a dictionary keys onto the stack
-     """
-    pass
-
-
-def values(dictionary):
-    """
-     v = values(mydict)
-
-     pushes a list of a dictionary values onto the stack
-     """
-    pass
-
-
-def has_key(dictionary, key):
-    """
-     val = has_key(mydict, 'b')
-
-     pushes a boolean of wether a dictionary has a key onto the stack
-     """
-    pass
+#def keys(dictionary):
+#    """
+#     k = keys(mydict)
+#
+#     pushes a list of a dictionary keys onto the stack
+#     """
+#    pass
+#
+#
+#def values(dictionary):
+#    """
+#     v = values(mydict)
+#
+#     pushes a list of a dictionary values onto the stack
+#     """
+#    pass
+#
+#
+#def has_key(dictionary, key):
+#    """
+#     val = has_key(mydict, 'b')
+#
+#     pushes a boolean of wether a dictionary has a key onto the stack
+#     """
+#    pass
 
 
 # This is not necessary.  you can use mystring[start:end]
@@ -116,20 +116,20 @@ def sha256(data):
     pass
 
 
-def hash160(data):
-    """
-
-    :param data:
-    """
-    pass
-
-
-def hash256(data):
-    """
-
-    :param data:
-    """
-    pass
+#def hash160(data):
+#    """
+#
+#    :param data:
+#    """
+#    pass
+#
+#
+#def hash256(data):
+#    """
+#
+#    :param data:
+#    """
+#    pass
 
 
 def verify_signature(pubkey, signature, message):

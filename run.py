@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
 from boa.compiler import Compiler
-import getopt, sys
+import getopt, sys, subprocess, os
 
 filename = None
 runmode = 0
+deletedebug = False
+
+def deletedebugfile(filename, strs):
+    d_file = filename.replace('.py', strs)
+    if os.path.isfile(d_file):
+        subprocess.call(["rm",d_file])
 
 if __name__ ==  '__main__':
-    opts, args = getopt.getopt(sys.argv[1:],"n:m:")
+    opts, args = getopt.getopt(sys.argv[1:],"n:m:d")
     for op, value in opts:
         if op == "-n":
             filename = value
         if op == "-m":
             runmode = int(value)
+        if op == "-d":
+            deletedebug = True
 
     if filename == None:
         print("Filename do not set!!!")
@@ -25,3 +33,8 @@ if __name__ ==  '__main__':
         module = Compiler.load(filename).default
         module.write()
         module.to_s()
+
+    if deletedebug:
+        deletedebugfile(filename, '.abi.json')
+        deletedebugfile(filename, '.debug.json')
+        deletedebugfile(filename, '.FuncMap.json')

@@ -34,6 +34,7 @@ class PyToken():
         self.jump_found = False
         self.jump_from_addr = None
         self.jump_to_addr = None
+        self.is_normal_call = False
         # self.jump_to_addr_abs = None
         # self.jump_from_addr_abs = None
 
@@ -258,8 +259,10 @@ class PyToken():
             elif self.instruction.arg in [Compare.NE, Compare.IS_NOT]:
                 tokenizer.convert1(VMOp.NUMNOTEQUAL, self)
             elif self.instruction.arg == Compare.IN:
-                tokenizer.convert1(VMOp.SWAP, self)
-                tokenizer.convert1(VMOp.HASKEY, self)
+                raise NotImplementedError(
+                    "[Compilation error] Built in in is not implemented. your code use like for .. in .. or if .. in ..")
+                #tokenizer.convert1(VMOp.SWAP, self)
+                #tokenizer.convert1(VMOp.HASKEY, self)
 
         # arrays
         elif op == pyop.BUILD_LIST:
@@ -286,15 +289,17 @@ class PyToken():
             tokenizer.convert_method_call(self)
 
         elif op == pyop.POP_TOP:
-            pass
-            # if prev_token:
-            #     is_action = False
-            #     for item in tokenizer.method.module.actions:
-            #         if item.method_name == prev_token.func_name:
-            #             is_action = True
+            if prev_token.is_normal_call:
+                tokenizer.convert1(VMOp.DROP, self)
+            #pass
+            #if prev_token:
+            #    is_action = False
+            #    for item in tokenizer.method.module.actions:
+            #        if item.method_name == prev_token.func_name:
+            #            is_action = True
             #
-            # if is_action:
-            #     tokenizer.convert1(VMOp.DROP, self)
+            #if is_action:
+            #    tokenizer.convert1(VMOp.DROP, self)
 
         elif op == pyop.DUP_TOP_TWO:
             tokenizer.convert_dup_top_two(self)
