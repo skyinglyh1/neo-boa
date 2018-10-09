@@ -523,6 +523,7 @@ class VMTokenizer(object):
 
             vmtoken.src_method = self.method
             vmtoken.target_method = pytoken.func_name
+            pytoken.is_normal_call = True
 #            pdb.set_trace()
 
         return vmtoken
@@ -535,8 +536,8 @@ class VMTokenizer(object):
         :return:
         """
         if op in ['len', 'abs', 'min', 'max', 'concat', 'take', 'substr',
-                  'reverse', 'append', 'remove', 'keys', 'values', 'has_key',
-                  'sha1', 'sha256', 'hash160', 'hash256', 'breakpoint',
+                  'reverse', 'append', 'remove',
+                  'sha1', 'sha256', 'breakpoint',
                   'verify_signature',
                   'Exception', 'throw_if_null', ]:
             return True
@@ -698,16 +699,16 @@ class VMTokenizer(object):
         if op == 'print':
             syscall_name = 'System.Runtime.Log'.encode('utf-8')
 
-        elif op == 'enumerate':
-            syscall_name = b'Neo.Enumerator.Create'
-        elif op == 'iter':
-            syscall_name = b'Neo.Iterator.Create'
-        elif op == 'next':
-            syscall_name = b'Neo.Enumerator.Next'
+        #elif op == 'enumerate':
+        #    syscall_name = b'Neo.Enumerator.Create'
+        #elif op == 'iter':
+        #    syscall_name = b'Neo.Iterator.Create'
+        #elif op == 'next':
+        #    syscall_name = b'Neo.Enumerator.Next'
 
-        elif op == 'reversed':
-            raise NotImplementedError(
-                "[Compilation error] Built in %s is not implemented. Use array.reverse() instead." % op)
+        #elif op == 'reversed':
+        #    raise NotImplementedError(
+        #        "[Compilation error] Built in %s is not implemented. Use array.reverse() instead." % op)
 
         if syscall_name:
             length = len(syscall_name)
