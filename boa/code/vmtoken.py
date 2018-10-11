@@ -6,7 +6,7 @@ from boa.code.pyop import *
 from boa.util import Digest
 from boa.util import Address
 import base58
-NEO_SC_FRAMEWORK = 'boa.interop.'
+ONTOLOGY_SC_FRAMEWORK = 'boa.interop.'
 
 
 class VMToken(object):
@@ -602,7 +602,7 @@ class VMTokenizer(object):
         :param op:
         :return:
         """
-        if op is not None and NEO_SC_FRAMEWORK in op:
+        if op is not None and ONTOLOGY_SC_FRAMEWORK in op:
             return True
         return False
 
@@ -635,7 +635,7 @@ class VMTokenizer(object):
             if op == 'Neo.Enumerator':
                 op = 'Neo.Enumerator.Create'
 
-        syscall_name = op.replace(NEO_SC_FRAMEWORK, '').encode('utf-8')
+        syscall_name = op.replace(ONTOLOGY_SC_FRAMEWORK, '').encode('utf-8')
         length = len(syscall_name)
         ba = bytearray([length]) + bytearray(syscall_name)
         pytoken.is_sys_call = False
