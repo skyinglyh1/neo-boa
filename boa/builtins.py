@@ -116,20 +116,20 @@ def sha256(data):
     pass
 
 
-#def hash160(data):
-#    """
-#
-#    :param data:
-#    """
-#    pass
-#
-#
-#def hash256(data):
-#    """
-#
-#    :param data:
-#    """
-#    pass
+def hash160(data):
+    """
+
+    :param data:
+    """
+    pass
+
+
+def hash256(data):
+    """
+
+    :param data:
+    """
+    pass
 
 
 def verify_signature(pubkey, signature, message):
