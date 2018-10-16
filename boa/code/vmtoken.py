@@ -537,7 +537,7 @@ class VMTokenizer(object):
         """
         if op in ['len', 'abs', 'min', 'max', 'concat', 'take', 'substr',
                   'reverse', 'append', 'remove',
-                  'sha1', 'sha256', 'breakpoint',
+                  'sha1', 'sha256', 'hash160', 'hash256', 'breakpoint',
                   'verify_signature',
                   'Exception', 'throw_if_null', ]:
             return True
