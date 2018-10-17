@@ -57,9 +57,3 @@
 | 51   | boa.buildins                       | sha256                 | data                                     | hash data with sha256                    |
 | 52   | boa.buildins                       | hash160                | data                                     | hash data with hash160                   |
 | 53   | boa.buildins                       | hash256                | data                                     | hash data with hash                      |
-|      |                                    |                        |                                          |                                          |
-|      |                                    |                        |                                          |                                          |
-|      |                                    |                        |                                          |                                          |
-|      |                                    |                        |                                          |                                          |
-|      |                                    |                        |                                          |                                          |
-|      |                                    |                        |                                          |                                          |
