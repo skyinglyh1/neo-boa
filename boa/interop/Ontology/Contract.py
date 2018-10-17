@@ -26,14 +26,6 @@ def GetScript(contract):
     pass
 
 
-def GetStorageContext(contract):
-    """
-
-    :param contract:
-    """
-    pass
-
-
 def Create(script, parameter_list, return_type, properties, name, version, author, email, description):
     """
 
@@ -62,13 +54,5 @@ def Migrate(script, parameter_list, return_type, properties, name, version, auth
     :param author:
     :param email:
     :param description:
-    """
-    pass
-
-
-def Destroy():
-    """
-
-    :param contract:
     """
     pass
