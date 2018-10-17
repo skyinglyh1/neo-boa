@@ -31,32 +31,15 @@ def GetTransaction(hash):
     pass
 
 
-def GetAccount(script_hash):
-    """
-
-    :param script_hash:
-    """
-    pass
-
-
-def GetValidators():
-    """
-
-    """
-    pass
-
-
-def GetAsset(asset_id):
-    """
-
-    :param asset_id:
-    """
-    pass
-
-
 def GetContract(script_hash):
     """
 
     :param script_hash:
+    """
+    pass
+
+def GetTransactionHeight(hash)
+    """
+    :para hash:   
     """
     pass
