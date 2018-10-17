@@ -6,6 +6,11 @@ def GetContext():
     """
     pass
 
+def GetReadOnlyContext():
+    """
+
+    """
+    pass
 
 # def CurrentContext():
 #    return GetContext()
@@ -27,16 +32,6 @@ def Put(context, key, value):
     :param value:
     """
     pass
-
-
-def Find(ctx, needle):
-    """
-
-    :param context:
-    :param needle:
-    """
-    pass
-
 
 def Delete(context, key):
     """

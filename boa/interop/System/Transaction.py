@@ -54,61 +54,9 @@ class Transaction:
         return GetUnspentCoins(self)
 
 
-def GetTXHash(transaction):
+def GetHash(transaction):
     """
 
     :param transaction:
-    """
-    pass
-
-
-def GetType(transaction):
-    """
-
-    :param transaction:
-    """
-    pass
-
-
-def GetAttributes(transaction):
-    """
-
-    :param transaction:
-    """
-    pass
-
-
-def GetInputs(transaction):
-    """
-
-    :param transaction:
-    """
-    pass
-
-
-def GetOutputs(transaction):
-    """
-
-    :param transaction:
-    """
-    pass
-
-
-def GetReferences(transaction):
-    """
-
-    :param transaction:
-    """
-    pass
-
-
-def GetUnspentCoins(transaction):
-    """
-
-    Args:
-        transaction:
-
-    Returns:
-
     """
     pass
