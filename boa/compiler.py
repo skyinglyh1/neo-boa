@@ -1,6 +1,7 @@
 import os
 from boa.code.module import Module
 from boa import __version__
+import binascii
 
 
 class Compiler(object):
@@ -101,9 +102,15 @@ class Compiler(object):
             path, filename = os.path.split(fullpath)
             newfilename = filename.replace('.py', '.avm')
             output_path = '%s/%s' % (path, newfilename)
+            newfilename_str = filename.replace('.py', '.avm.str')
+            output_path_str = '%s/%s' % (path, newfilename_str)
 
         Compiler.write_file(data, output_path)
         compiler.entry_module.export_debug(output_path, data)
+
+        data_str = binascii.hexlify(data).decode('ascii') 
+        with open(output_path_str, 'w') as out_file:
+            out_file.write(data_str)
 
         return data
 
