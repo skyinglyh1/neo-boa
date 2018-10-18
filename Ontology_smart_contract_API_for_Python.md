@@ -22,6 +22,7 @@
 |            boa.interop.System.Blockchain |                  GetBlock |                                     height_or_hash | get block by height or hash |
 |            boa.interop.System.Blockchain |            GetTransaction |                                               hash | get transaction by hash |
 |            boa.interop.System.Blockchain |               GetContract |                                        script_hash | get contract by script hash |
+| boa.interop.System.Blockchain | GetTransactionHeight | heigh of transaction |  |
 |                 boa.interop.System.Block |       GetTransactionCount |                                              block | get transaction count of block |
 |                 boa.interop.System.Block |           GetTransactions |                                              block | get transactions of block |
 |                 boa.interop.System.Block |            GetTransaction |                                       block, index | get the transaction by index |

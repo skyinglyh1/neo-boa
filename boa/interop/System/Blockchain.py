@@ -38,7 +38,7 @@ def GetContract(script_hash):
     """
     pass
 
-def GetTransactionHeight(hash)
+def GetTransactionHeight(hash):
     """
     :para hash:   
     """
